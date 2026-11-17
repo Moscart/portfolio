@@ -1,15 +1,16 @@
-import type {MetadataRoute} from 'next';
+import type { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/lib/site-config';
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl =
-    process.env.APP_URL ||
-    'https://ais-pre-dif3f56on34skfo7csf7zo-622233591882.asia-northeast1.run.app';
+  const siteUrl = getSiteUrl();
 
   return {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: '/api/',
     },
     sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

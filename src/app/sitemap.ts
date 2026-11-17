@@ -1,9 +1,8 @@
-import type {MetadataRoute} from 'next';
+import type { MetadataRoute } from 'next';
+import { getSiteUrl, SITE_CONFIG } from '@/lib/site-config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl =
-    process.env.APP_URL ||
-    'https://ais-pre-dif3f56on34skfo7csf7zo-622233591882.asia-northeast1.run.app';
+  const siteUrl = getSiteUrl();
 
   return [
     {
@@ -11,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
+      images: [`${siteUrl}/opengraph-image`, `${siteUrl}${SITE_CONFIG.profileImagePath}`],
     },
   ];
 }

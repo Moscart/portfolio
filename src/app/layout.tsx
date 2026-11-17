@@ -1,5 +1,6 @@
-import type {Metadata} from 'next';
-import {Bricolage_Grotesque, Plus_Jakarta_Sans, JetBrains_Mono} from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { Bricolage_Grotesque, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
+import { getSiteUrl, SITE_CONFIG } from '@/lib/site-config';
 import './globals.css';
 
 const bricolage = Bricolage_Grotesque({
@@ -23,45 +24,37 @@ const jetbrains = JetBrains_Mono({
   display: 'swap',
 });
 
-const siteUrl =
-  process.env.APP_URL ||
-  'https://ais-pre-dif3f56on34skfo7csf7zo-622233591882.asia-northeast1.run.app';
+const siteUrl = getSiteUrl();
 
-const seoTitle = 'Daniel Theo Santoso — Portofolio Frontend Programmer';
-const seoDescription =
-  'Portofolio resmi Daniel Theo Santoso, Frontend Programmer di Surakarta. Jelajahi proyek aplikasi web modern berbasis React, Next.js, dan TypeScript.';
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  colorScheme: 'light dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FAF9F6' },
+    { media: '(prefers-color-scheme: dark)', color: '#0B0C0E' },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: seoTitle,
-    template: '%s | Daniel Theo Santoso',
+    default: SITE_CONFIG.title,
+    template: `%s | ${SITE_CONFIG.name}`,
   },
-  description: seoDescription,
-  keywords: [
-    'Daniel Theo Santoso',
-    'Frontend Programmer',
-    'Frontend Developer Indonesia',
-    'Web Developer Surakarta',
-    'React Developer',
-    'Next.js Developer',
-    'TypeScript',
-    'PT Daya Rekadigital Indonesia',
-    'Portofolio Frontend',
-  ],
-  authors: [{name: 'Daniel Theo Santoso', url: 'https://www.linkedin.com/in/daniel-theo-santoso/'}],
-  creator: 'Daniel Theo Santoso',
-  publisher: 'Daniel Theo Santoso',
+  description: SITE_CONFIG.description,
+  keywords: [...SITE_CONFIG.keywords],
+  authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.linkedinUrl }],
+  creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
+  category: 'technology',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: '/',
-  },
-  icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
-    ],
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
   },
   robots: {
     index: true,
@@ -76,25 +69,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'id_ID',
-    url: siteUrl,
-    siteName: 'Daniel Theo Santoso',
-    title: seoTitle,
-    description: seoDescription,
-    images: [
-      {
-        url: '/assets/aistudio/IMG_20260221_094158_522_9c399076.webp',
-        width: 800,
-        height: 1000,
-        alt: 'Daniel Theo Santoso — Frontend Programmer',
-      },
-    ],
+    locale: SITE_CONFIG.locale,
+    url: '/',
+    siteName: SITE_CONFIG.name,
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: seoTitle,
-    description: seoDescription,
-    images: ['/assets/aistudio/IMG_20260221_094158_522_9c399076.webp'],
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
   },
 };
 
@@ -102,12 +86,30 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: SITE_CONFIG.name,
+      description: SITE_CONFIG.description,
+      inLanguage: SITE_CONFIG.language,
+      publisher: {
+        '@id': `${siteUrl}/#person`,
+      },
+    },
+    {
       '@type': 'ProfilePage',
       '@id': `${siteUrl}/#webpage`,
       url: siteUrl,
-      name: seoTitle,
-      description: seoDescription,
-      inLanguage: 'id-ID',
+      name: SITE_CONFIG.title,
+      description: SITE_CONFIG.description,
+      inLanguage: SITE_CONFIG.language,
+      isPartOf: {
+        '@id': `${siteUrl}/#website`,
+      },
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/opengraph-image`,
+      },
       mainEntity: {
         '@id': `${siteUrl}/#person`,
       },
@@ -115,10 +117,10 @@ const jsonLd = {
     {
       '@type': 'Person',
       '@id': `${siteUrl}/#person`,
-      name: 'Daniel Theo Santoso',
-      jobTitle: 'Frontend Programmer',
-      email: 'mailto:danieltheo.73@gmail.com',
-      image: `${siteUrl}/assets/aistudio/IMG_20260221_094158_522_9c399076.webp`,
+      name: SITE_CONFIG.name,
+      jobTitle: SITE_CONFIG.role,
+      email: `mailto:${SITE_CONFIG.email}`,
+      image: `${siteUrl}${SITE_CONFIG.profileImagePath}`,
       url: siteUrl,
       address: {
         '@type': 'PostalAddress',
@@ -148,15 +150,12 @@ const jsonLd = {
         'Tailwind CSS',
         'Frontend Web Development',
       ],
-      sameAs: [
-        'https://www.linkedin.com/in/daniel-theo-santoso/',
-        'https://github.com/Moscart',
-      ],
+      sameAs: [SITE_CONFIG.linkedinUrl, SITE_CONFIG.githubUrl],
     },
   ],
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="id"
@@ -164,12 +163,14 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       suppressHydrationWarning
     >
       <body
-        className="bg-[#FAF9F6] dark:bg-[#0B0C0E] text-zinc-900 dark:text-zinc-100 font-[family-name:var(--font-sans)] antialiased selection:bg-orange-500 selection:text-white dark:selection:bg-yellow-400 dark:selection:text-zinc-950"
+        className="bg-[#FAF9F6] font-[family-name:var(--font-sans)] text-zinc-900 antialiased selection:bg-orange-500 selection:text-white dark:bg-[#0B0C0E] dark:text-zinc-100 dark:selection:bg-yellow-400 dark:selection:text-zinc-950"
         suppressHydrationWarning
       >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+          }}
         />
         {children}
       </body>
