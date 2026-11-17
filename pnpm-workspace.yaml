@@ -1,0 +1,4 @@
+allowBuilds:
+  '@google/genai': true
+  '@tailwindcss/oxide': true
+  protobufjs: true
