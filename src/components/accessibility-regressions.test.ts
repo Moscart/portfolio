@@ -1,0 +1,58 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+
+function collectTsxFiles(dir: string): string[] {
+  const results: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...collectTsxFiles(full));
+    } else if (entry.name.endsWith('.tsx')) {
+      results.push(full);
+    }
+  }
+  return results;
+}
+
+test('anchor links never use Base UI Button nativeButton={false} (prevents role="button" on <a>)', () => {
+  const files = collectTsxFiles(join(process.cwd(), 'src', 'components'));
+  for (const file of files) {
+    const content = readFileSync(file, 'utf8');
+    assert.equal(
+      content.includes('nativeButton={false}'),
+      false,
+      `${file} should style <a> with buttonVariants() instead of Button nativeButton={false}`,
+    );
+  }
+});
+
+test('CaseStudyModal enforces viewport max-height and internal scrolling on both Desktop Dialog and Mobile Sheet', () => {
+  const modal = readFileSync(
+    join(process.cwd(), 'src', 'components', 'CaseStudyModal.tsx'),
+    'utf8',
+  );
+  assert.ok(modal.includes('max-h-[85dvh]') && modal.includes('overflow-y-auto'));
+  assert.ok(modal.includes('max-h-[calc(100dvh-2rem)]'));
+});
+
+test('HeroSection clips scaled Avatar inside frame and offsets #top below sticky navbar', () => {
+  const hero = readFileSync(
+    join(process.cwd(), 'src', 'components', 'sections', 'HeroSection.tsx'),
+    'utf8',
+  );
+  assert.ok(hero.includes('scroll-mt-16'), 'Hero #top section must offset sticky navbar');
+  assert.ok(
+    /Avatar[^>]*overflow-hidden/.test(hero),
+    'Hero Avatar root must apply overflow-hidden to clip scaled portrait',
+  );
+});
+
+test('LanguageToggle guards Server Action calls with try/catch for offline resilience', () => {
+  const toggle = readFileSync(
+    join(process.cwd(), 'src', 'components', 'LanguageToggle.tsx'),
+    'utf8',
+  );
+  assert.ok(toggle.includes('try {') && toggle.includes('catch'));
+});

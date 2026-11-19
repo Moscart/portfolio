@@ -55,6 +55,23 @@ export function computeNextThemeOverride(
   };
 }
 
+/**
+ * Safely accesses window.localStorage inside try/catch so strict privacy modes
+ * or sandboxed iframes where the property getter itself throws SecurityError never crash.
+ */
+export function getSafeLocalStorage(
+  win: { localStorage?: StorageLike } | undefined = typeof window !== 'undefined'
+    ? window
+    : undefined,
+): StorageLike | null {
+  if (!win) return null;
+  try {
+    return win.localStorage ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export function safeReadThemeOverride(storage?: StorageLike | null): ThemeOverride {
   if (!storage) return null;
   try {
@@ -82,8 +99,10 @@ export function safeWriteThemeOverride(
 
 /**
  * Minimal blocking inline script injected in <head> right after <meta name="color-scheme">
- * to prevent a flash of wrong theme before hydration.
+ * to prevent FOUC before hydration.
+ * - Isolates localStorage access in its own try/catch so dark OS preference still applies when storage is blocked.
+ * - Sets root classes (.dark / .light) and style.colorScheme without mutating React 19's hoistable <meta> before hydration.
  */
 export function getThemeInitScript(): string {
-  return `(function(){try{var s=localStorage.getItem('${THEME_STORAGE_KEY}');var o=(s==='light'||s==='dark')?s:null;var m=document.querySelector('meta[name="color-scheme"]');if(m){m.setAttribute('content',o||'light dark');}var d=o?o==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;var r=document.documentElement;r.classList.toggle('dark',d);r.classList.toggle('light',o==='light');}catch(e){}})();`;
+  return `(function(){var o=null;try{var s=localStorage.getItem('${THEME_STORAGE_KEY}');if(s==='light'||s==='dark'){o=s;}}catch(e){}try{var d=o?o==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;var r=document.documentElement;r.classList.toggle('dark',d);r.classList.toggle('light',o==='light');r.style.colorScheme=o||'light dark';}catch(e){}})();`;
 }

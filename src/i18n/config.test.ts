@@ -51,6 +51,8 @@ test('resolveLocale handles valid, messy, missing, and invalid cookie values saf
   assert.equal(resolveLocale('id'), 'id');
   assert.equal(resolveLocale(' ID '), 'id');
   assert.equal(resolveLocale('EN'), 'en');
+  assert.equal(resolveLocale(123 as unknown as string), 'en');
+  assert.equal(resolveLocale({} as unknown as string), 'en');
 });
 
 test('messages/en.json and messages/id.json have identical keys, non-empty strings, and match portfolio-data IDs', () => {

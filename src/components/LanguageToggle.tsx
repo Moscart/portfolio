@@ -22,8 +22,12 @@ export function LanguageToggle({ layoutIdPrefix = 'navbar', className }: Languag
   const handleSelect = (nextLocale: Locale) => {
     if (nextLocale === locale || isPending) return;
     startTransition(async () => {
-      await setLocaleAction(nextLocale);
-      router.refresh();
+      try {
+        await setLocaleAction(nextLocale);
+        router.refresh();
+      } catch {
+        // Gracefully keep current locale if offline or Server Action fails
+      }
     });
   };
 

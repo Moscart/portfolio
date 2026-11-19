@@ -5,10 +5,11 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import { IconArrowUpRight } from '@tabler/icons-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { CORE_STACK_ITEMS } from '@/lib/portfolio-data';
 import { SITE_CONFIG } from '@/lib/site-config';
+import { cn } from '@/lib/utils';
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -19,7 +20,7 @@ export function HeroSection() {
     <section
       id="top"
       aria-labelledby="hero-heading"
-      className="bg-background py-10 md:py-12 lg:py-14 2xl:pt-16 2xl:pb-14"
+      className="scroll-mt-16 bg-background py-10 md:py-12 lg:py-14 2xl:pt-16 2xl:pb-14"
     >
       <div className="px-5 md:px-8 lg:px-16 2xl:px-0">
         <div className="mx-auto flex w-full max-w-[1008px] flex-col gap-7 md:gap-8 lg:gap-9 2xl:gap-10">
@@ -31,7 +32,7 @@ export function HeroSection() {
             className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
           >
             <div className="flex items-center gap-4">
-              <Avatar className="size-16 rounded-2xl after:rounded-2xl">
+              <Avatar className="size-16 overflow-hidden rounded-2xl after:rounded-2xl">
                 <AvatarImage
                   src={SITE_CONFIG.profileImagePath}
                   alt={t('fullName')}
@@ -78,49 +79,54 @@ export function HeroSection() {
               {t('bio')}
             </p>
 
-            {/* Responsive Action Bar */}
+            {/* Responsive Action Bar (native <a> links styled via shadcn buttonVariants) */}
             <div className="grid grid-cols-3 gap-2 pt-2 md:flex md:flex-wrap md:items-center md:gap-3">
-              <Button
-                nativeButton={false}
-                render={<a href="#contact" />}
-                className="col-span-3 h-11 rounded-lg px-5 text-base font-semibold md:w-auto"
+              <a
+                href="#contact"
+                className={cn(
+                  buttonVariants({ variant: 'default' }),
+                  'col-span-3 h-11 rounded-lg px-5 text-base font-semibold md:w-auto',
+                )}
               >
                 <span>{t('ctaPrimary')}</span>
                 <IconArrowUpRight className="size-4 stroke-[2]" aria-hidden="true" />
-              </Button>
+              </a>
 
-              <Button
-                variant="outline"
-                nativeButton={false}
-                render={
-                  <a href={SITE_CONFIG.githubUrl} target="_blank" rel="noopener noreferrer" />
-                }
-                className="h-11 rounded-lg px-4 text-sm font-medium md:text-base"
+              <a
+                href={SITE_CONFIG.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ variant: 'outline' }),
+                  'h-11 rounded-lg px-4 text-sm font-medium md:text-base',
+                )}
               >
                 {t('github')}
-              </Button>
+              </a>
 
-              <Button
-                variant="outline"
-                nativeButton={false}
-                render={
-                  <a href={SITE_CONFIG.linkedinUrl} target="_blank" rel="noopener noreferrer" />
-                }
-                className="h-11 rounded-lg px-4 text-sm font-medium md:text-base"
+              <a
+                href={SITE_CONFIG.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ variant: 'outline' }),
+                  'h-11 rounded-lg px-4 text-sm font-medium md:text-base',
+                )}
               >
                 {t('linkedin')}
-              </Button>
+              </a>
 
-              <Button
-                variant="outline"
-                nativeButton={false}
-                render={
-                  <a href={SITE_CONFIG.mediumUrl} target="_blank" rel="noopener noreferrer" />
-                }
-                className="h-11 rounded-lg px-4 text-sm font-medium md:text-base"
+              <a
+                href={SITE_CONFIG.mediumUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ variant: 'outline' }),
+                  'h-11 rounded-lg px-4 text-sm font-medium md:text-base',
+                )}
               >
                 {t('medium')}
-              </Button>
+              </a>
             </div>
           </motion.div>
 

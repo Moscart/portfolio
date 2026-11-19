@@ -3,7 +3,7 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { IconArrowUpRight, IconX } from '@tabler/icons-react';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import {
   Sheet,
@@ -132,61 +132,55 @@ export function MobileNavDrawer({ open, onOpenChange, activeSection }: MobileNav
 
         {/* Bottom Pinned CTA & Social Grid */}
         <div className="mt-auto flex flex-col gap-3 px-5 pt-4 pb-6">
-          <Button
-            nativeButton={false}
-            render={<a href="#contact" onClick={() => onOpenChange(false)} />}
-            className="h-11 w-full rounded-lg text-base font-semibold"
+          <a
+            href="#contact"
+            onClick={() => onOpenChange(false)}
+            className={cn(
+              buttonVariants({ variant: 'default' }),
+              'h-11 w-full rounded-lg text-base font-semibold',
+            )}
           >
             <span>{tHero('ctaPrimary')}</span>
             <IconArrowUpRight className="size-4 stroke-[2]" aria-hidden="true" />
-          </Button>
+          </a>
 
           <div className="grid grid-cols-3 gap-2">
-            <Button
-              variant="outline"
-              nativeButton={false}
-              render={
-                <a
-                  href={SITE_CONFIG.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => onOpenChange(false)}
-                />
-              }
-              className="h-10 rounded-lg text-xs font-medium"
+            <a
+              href={SITE_CONFIG.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => onOpenChange(false)}
+              className={cn(
+                buttonVariants({ variant: 'outline' }),
+                'h-10 rounded-lg text-xs font-medium',
+              )}
             >
               {tHero('github')}
-            </Button>
-            <Button
-              variant="outline"
-              nativeButton={false}
-              render={
-                <a
-                  href={SITE_CONFIG.linkedinUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => onOpenChange(false)}
-                />
-              }
-              className="h-10 rounded-lg text-xs font-medium"
+            </a>
+            <a
+              href={SITE_CONFIG.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => onOpenChange(false)}
+              className={cn(
+                buttonVariants({ variant: 'outline' }),
+                'h-10 rounded-lg text-xs font-medium',
+              )}
             >
               {tHero('linkedin')}
-            </Button>
-            <Button
-              variant="outline"
-              nativeButton={false}
-              render={
-                <a
-                  href={SITE_CONFIG.mediumUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => onOpenChange(false)}
-                />
-              }
-              className="h-10 rounded-lg text-xs font-medium"
+            </a>
+            <a
+              href={SITE_CONFIG.mediumUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => onOpenChange(false)}
+              className={cn(
+                buttonVariants({ variant: 'outline' }),
+                'h-10 rounded-lg text-xs font-medium',
+              )}
             >
               {tHero('medium')}
-            </Button>
+            </a>
           </div>
         </div>
       </SheetContent>

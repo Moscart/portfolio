@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import { IconArrowUpRight, IconCheck, IconCopy } from '@tabler/icons-react';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { SITE_CONFIG } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
 
@@ -63,14 +63,16 @@ export function ContactFooterSection({ copied, onCopyEmail }: ContactFooterSecti
 
             {/* Direct Contact Actions */}
             <div className="flex flex-col gap-3 pt-2 md:flex-row md:items-center">
-              <Button
-                nativeButton={false}
-                render={<a href={`mailto:${SITE_CONFIG.email}`} />}
-                className="h-11 w-full rounded-lg px-5 text-base font-semibold md:w-auto"
+              <a
+                href={`mailto:${SITE_CONFIG.email}`}
+                className={cn(
+                  buttonVariants({ variant: 'default' }),
+                  'h-11 w-full rounded-lg px-5 text-base font-semibold md:w-auto',
+                )}
               >
                 <span>{t('emailCta')}</span>
                 <IconArrowUpRight className="size-4 stroke-[2]" aria-hidden="true" />
-              </Button>
+              </a>
 
               <button
                 type="button"

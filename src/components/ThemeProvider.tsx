@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 import {
   computeNextThemeOverride,
+  getSafeLocalStorage,
   resolveEffectiveDark,
   safeReadThemeOverride,
   safeWriteThemeOverride,
@@ -46,20 +47,22 @@ function emitChange() {
 function applyThemeToDocument(override: ThemeOverride, systemPrefersDark: boolean) {
   if (typeof document === 'undefined') return;
   const effectiveDark = resolveEffectiveDark(override, systemPrefersDark);
+  const scheme = toMetaColorScheme(override);
   const root = document.documentElement;
   root.classList.toggle('dark', effectiveDark);
   root.classList.toggle('light', override === 'light');
+  root.style.colorScheme = scheme;
 
-  const meta = document.querySelector('meta[name="color-scheme"]');
-  if (meta) {
-    meta.setAttribute('content', toMetaColorScheme(override));
+  const metas = document.querySelectorAll('meta[name="color-scheme"]');
+  for (const meta of metas) {
+    meta.setAttribute('content', scheme);
   }
 }
 
 function ensureClientInitialized() {
   if (initialized || typeof window === 'undefined') return;
   initialized = true;
-  const override = safeReadThemeOverride(window.localStorage);
+  const override = safeReadThemeOverride(getSafeLocalStorage(window));
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   clientSnapshot = { override, systemPrefersDark };
 }
@@ -97,7 +100,7 @@ function subscribeThemeStore(callback: () => void): () => void {
 
   const handleStorageChange = (event: StorageEvent) => {
     if (event.key !== null && event.key !== THEME_STORAGE_KEY) return;
-    const nextOverride = safeReadThemeOverride(window.localStorage);
+    const nextOverride = safeReadThemeOverride(getSafeLocalStorage(window));
     clientSnapshot = {
       override: nextOverride,
       systemPrefersDark: mql.matches,
@@ -134,7 +137,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     const { nextOverride } = computeNextThemeOverride(clientSnapshot.override, systemPrefersDark);
     if (typeof window !== 'undefined') {
-      safeWriteThemeOverride(window.localStorage, nextOverride);
+      safeWriteThemeOverride(getSafeLocalStorage(window), nextOverride);
     }
     clientSnapshot = {
       override: nextOverride,

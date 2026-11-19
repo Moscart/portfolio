@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   computeNextThemeOverride,
+  getSafeLocalStorage,
   getThemeInitScript,
   resolveEffectiveDark,
   safeReadThemeOverride,
@@ -45,7 +46,7 @@ test('two-state dark mode toggle overrides against OS and reverts to system when
   });
 });
 
-test('safe storage helpers never throw when localStorage throws SecurityError', () => {
+test('safe storage helpers never throw when localStorage methods or window.localStorage getter throw SecurityError', () => {
   const brokenStorage = {
     getItem() {
       throw new Error('SecurityError');
@@ -60,12 +61,51 @@ test('safe storage helpers never throw when localStorage throws SecurityError', 
   assert.equal(safeReadThemeOverride(brokenStorage), null);
   assert.doesNotThrow(() => safeWriteThemeOverride(brokenStorage, 'dark'));
   assert.doesNotThrow(() => safeWriteThemeOverride(brokenStorage, null));
+
+  const throwingWindow = Object.defineProperty({}, 'localStorage', {
+    get() {
+      throw new Error('SecurityError');
+    },
+  }) as { localStorage?: Storage };
+  assert.equal(getSafeLocalStorage(throwingWindow), null);
 });
 
-test('getThemeInitScript contains try/catch, meta color-scheme update, and .dark toggle', () => {
+test('getThemeInitScript applies dark OS theme even when localStorage throws and avoids mutating React-managed <meta> before hydration', () => {
   const script = getThemeInitScript();
-  assert.ok(script.includes('try'));
-  assert.ok(script.includes('meta[name="color-scheme"]'));
-  assert.ok(script.includes('prefers-color-scheme: dark'));
-  assert.ok(script.includes("classList.toggle('dark'"));
+  assert.equal(
+    script.includes('meta[name="color-scheme"]'),
+    false,
+    'Init script must not mutate React 19 hoistable <meta> before hydration',
+  );
+
+  const classes = new Set<string>();
+  const style: Record<string, string> = {};
+  const fakeDocument = {
+    documentElement: {
+      style,
+      classList: {
+        toggle(name: string, force?: boolean) {
+          if (force) classes.add(name);
+          else classes.delete(name);
+        },
+      },
+    },
+  };
+  const fakeWindow = {
+    matchMedia: (q: string) => ({ matches: q.includes('dark') }),
+  };
+  const throwingLocalStorage = {
+    getItem() {
+      throw new Error('SecurityError');
+    },
+  };
+
+  const runner = new Function('window', 'document', 'localStorage', script);
+  assert.doesNotThrow(() => runner(fakeWindow, fakeDocument, throwingLocalStorage));
+  assert.equal(
+    classes.has('dark'),
+    true,
+    'Dark OS class must still apply when localStorage throws',
+  );
+  assert.equal(style.colorScheme, 'light dark');
 });

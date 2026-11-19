@@ -21,12 +21,14 @@ export const NAV_SECTIONS: readonly NavSectionItem[] = [
 
 /**
  * Resolves the active navigation section from section bounding rects relative to the viewport.
- * Returns null while still at the top of the Hero section before any nav section reaches the threshold.
+ * Returns null while still at the top of the Hero section before any nav section reaches the threshold,
+ * and activates the final section when scrolled to the bottom of the document.
  */
 export function resolveActiveSection(
   entries: readonly SectionRect[],
   viewportHeight: number,
   scrollY: number,
+  documentHeight?: number,
 ): SectionId | null {
   if (entries.length === 0) return null;
 
@@ -34,6 +36,15 @@ export function resolveActiveSection(
 
   if (scrollY <= 16 && entries[0].top > threshold) {
     return null;
+  }
+
+  if (
+    typeof documentHeight === 'number' &&
+    documentHeight > viewportHeight &&
+    scrollY > 0 &&
+    scrollY + viewportHeight >= documentHeight - 2
+  ) {
+    return entries[entries.length - 1].id;
   }
 
   let active: SectionId | null = null;

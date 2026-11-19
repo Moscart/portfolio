@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { IconArrowUpRight, IconX } from '@tabler/icons-react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Dialog,
   DialogClose,
@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { FEATURED_PROJECT } from '@/lib/portfolio-data';
+import { cn } from '@/lib/utils';
 
 interface CaseStudyModalProps {
   open: boolean;
@@ -46,7 +47,7 @@ export function CaseStudyModal({ open, onOpenChange }: CaseStudyModalProps) {
         <SheetContent
           side="bottom"
           showCloseButton={false}
-          className="gap-5 rounded-t-2xl border-t border-border bg-card px-5 pt-3 pb-6 text-foreground shadow-2xl"
+          className="max-h-[85dvh] gap-5 overflow-y-auto rounded-t-2xl border-t border-border bg-card px-5 pt-3 pb-6 text-foreground shadow-2xl"
         >
           {/* Mobile Drag Handle Pill */}
           <div className="mx-auto h-1 w-9 rounded-full bg-muted-foreground/35" aria-hidden="true" />
@@ -106,14 +107,18 @@ export function CaseStudyModal({ open, onOpenChange }: CaseStudyModalProps) {
 
           {/* Stacked Touch-Friendly Actions */}
           <div className="flex flex-col gap-2.5 pt-1">
-            <Button
-              nativeButton={false}
-              render={<a href={FEATURED_PROJECT.url} target="_blank" rel="noopener noreferrer" />}
-              className="h-11 w-full rounded-lg text-base font-semibold"
+            <a
+              href={FEATURED_PROJECT.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: 'default' }),
+                'h-11 w-full rounded-lg text-base font-semibold',
+              )}
             >
               <span>{t('visitCta')}</span>
               <IconArrowUpRight className="size-4 stroke-[2]" aria-hidden="true" />
-            </Button>
+            </a>
             <SheetClose
               render={
                 <Button
@@ -135,7 +140,7 @@ export function CaseStudyModal({ open, onOpenChange }: CaseStudyModalProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
-        className="w-full max-w-[560px] gap-5 rounded-2xl border border-border bg-card p-8 text-foreground shadow-2xl ring-0 sm:max-w-[560px]"
+        className="max-h-[calc(100dvh-2rem)] w-full max-w-[560px] gap-5 overflow-y-auto rounded-2xl border border-border bg-card p-8 text-foreground shadow-2xl ring-0 sm:max-w-[560px]"
       >
         {/* Top Meta Row */}
         <div className="flex items-center justify-between gap-4">
@@ -219,14 +224,18 @@ export function CaseStudyModal({ open, onOpenChange }: CaseStudyModalProps) {
             >
               {t('close')}
             </DialogClose>
-            <Button
-              nativeButton={false}
-              render={<a href={FEATURED_PROJECT.url} target="_blank" rel="noopener noreferrer" />}
-              className="h-10 rounded-lg px-5 text-sm font-semibold"
+            <a
+              href={FEATURED_PROJECT.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: 'default' }),
+                'h-10 rounded-lg px-5 text-sm font-semibold',
+              )}
             >
               <span>{t('visitCta')}</span>
               <IconArrowUpRight className="size-4 stroke-[2]" aria-hidden="true" />
-            </Button>
+            </a>
           </div>
         </div>
       </DialogContent>

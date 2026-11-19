@@ -45,7 +45,12 @@ export function PortfolioShell() {
         return [{ id: section.id, top: box.top, height: box.height }];
       });
 
-      const next = resolveActiveSection(rects, window.innerHeight, window.scrollY);
+      const next = resolveActiveSection(
+        rects,
+        window.innerHeight,
+        window.scrollY,
+        document.documentElement.scrollHeight,
+      );
       setActiveSection((prev) => (prev === next ? prev : next));
     };
 
