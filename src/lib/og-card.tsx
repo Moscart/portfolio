@@ -10,11 +10,11 @@ export const OG_IMAGE_SIZE = {
 
 export const OG_IMAGE_CONTENT_TYPE = 'image/png' as const;
 
-const TECH_PILLS = ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'] as const;
+const TECH_PILLS = ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Shadcn UI'] as const;
 
-async function loadAvatarDataUri(): Promise<string | null> {
+async function loadProfileOgDataUri(): Promise<string | null> {
   try {
-    const buffer = await readFile(join(process.cwd(), 'public', 'images', 'daniel-avatar.png'));
+    const buffer = await readFile(join(process.cwd(), 'public', 'images', 'daniel-profile-og.jpg'));
     return `data:image/jpeg;base64,${buffer.toString('base64')}`;
   } catch {
     return null;
@@ -23,10 +23,10 @@ async function loadAvatarDataUri(): Promise<string | null> {
 
 /**
  * Generates the 1200x630 Open Graph / Twitter social preview card matching
- * the portfolio's dark editorial aesthetic and "D." brand mark.
+ * the redesigned obsidian dark aesthetic (#09090B) and Brand Orange (#F54900).
  */
 export async function createOgCardResponse(): Promise<ImageResponse> {
-  const avatarSrc = await loadAvatarDataUri();
+  const avatarSrc = await loadProfileOgDataUri();
 
   return new ImageResponse(
     <div
@@ -36,15 +36,14 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        backgroundColor: '#0B0C0E',
+        backgroundColor: '#09090B',
         backgroundImage:
-          'radial-gradient(circle at 88% 18%, rgba(249, 115, 22, 0.22) 0%, rgba(11, 12, 14, 0) 48%)',
+          'radial-gradient(circle at 88% 18%, rgba(245, 73, 0, 0.22) 0%, rgba(9, 9, 11, 0) 48%)',
         padding: '56px 64px',
-        color: '#FFFFFF',
+        color: '#FAFAFA',
         fontFamily: 'sans-serif',
       }}
     >
-      {/* Top bar: Brand mark + Location badge */}
       <div
         style={{
           display: 'flex',
@@ -59,7 +58,7 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
               width: '56px',
               height: '56px',
               borderRadius: '14px',
-              backgroundColor: '#14161B',
+              backgroundColor: '#18181B',
               border: '2px solid #27272A',
               display: 'flex',
               alignItems: 'center',
@@ -69,9 +68,9 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
             <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
               <path
                 d="M15 20H25.5C32.4036 20 37.5 25.0964 37.5 32C37.5 38.9036 32.4036 44 25.5 44H15V20ZM21.5 25.5V38.5H25.2C29.066 38.5 31 35.933 31 32C31 28.067 29.066 25.5 25.2 25.5H21.5Z"
-                fill="#FFFFFF"
+                fill="#FAFAFA"
               />
-              <circle cx="45.5" cy="39.5" r="5" fill="#F97316" />
+              <circle cx="45.5" cy="39.5" r="5" fill="#F54900" />
             </svg>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -80,7 +79,7 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
                 fontSize: '20px',
                 fontWeight: 700,
                 letterSpacing: '-0.02em',
-                color: '#FFFFFF',
+                color: '#FAFAFA',
               }}
             >
               {SITE_CONFIG.name}
@@ -91,11 +90,11 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
                 fontWeight: 600,
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: '#F97316',
+                color: '#FF7A3D',
                 marginTop: '4px',
               }}
             >
-              Portofolio Resmi
+              {SITE_CONFIG.role}
             </span>
           </div>
         </div>
@@ -107,11 +106,11 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
             gap: '10px',
             padding: '10px 18px',
             borderRadius: '999px',
-            backgroundColor: '#14161B',
+            backgroundColor: '#18181B',
             border: '1px solid #27272A',
             fontSize: '15px',
             fontWeight: 600,
-            color: '#D4D4D8',
+            color: '#E4E4E7',
           }}
         >
           <div
@@ -119,14 +118,13 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
               width: '8px',
               height: '8px',
               borderRadius: '999px',
-              backgroundColor: '#F97316',
+              backgroundColor: '#22C55E',
             }}
           />
-          <span>Surakarta, Indonesia</span>
+          <span>Surakarta, ID (UTC+7)</span>
         </div>
       </div>
 
-      {/* Main hero content + Avatar */}
       <div
         style={{
           display: 'flex',
@@ -146,28 +144,29 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
           <div
             style={{
               display: 'flex',
-              alignItems: 'baseline',
-              fontSize: '68px',
+              flexDirection: 'column',
+              fontSize: '60px',
               fontWeight: 700,
-              lineHeight: 1.06,
+              lineHeight: 1.08,
               letterSpacing: '-0.03em',
-              color: '#FFFFFF',
+              color: '#FAFAFA',
             }}
           >
-            <span>Frontend Programmer</span>
-            <span style={{ color: '#F97316' }}>.</span>
+            <span>Clean frontend architecture</span>
+            <span>
+              for fast, modern web apps<span style={{ color: '#F54900' }}>.</span>
+            </span>
           </div>
           <p
             style={{
-              marginTop: '22px',
+              marginTop: '20px',
               marginBottom: 0,
-              fontSize: '25px',
+              fontSize: '23px',
               lineHeight: 1.45,
               color: '#A1A1AA',
             }}
           >
-            Merancang aplikasi web modern yang cepat, presisi, dan responsif untuk pengalaman
-            pengguna yang optimal.
+            {SITE_CONFIG.description}
           </p>
         </div>
 
@@ -177,7 +176,7 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
               display: 'flex',
               padding: '8px',
               borderRadius: '28px',
-              backgroundColor: '#14161B',
+              backgroundColor: '#18181B',
               border: '2px solid #27272A',
               flexShrink: 0,
             }}
@@ -197,7 +196,6 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
         )}
       </div>
 
-      {/* Bottom footer strip */}
       <div
         style={{
           display: 'flex',
@@ -216,7 +214,7 @@ export async function createOgCardResponse(): Promise<ImageResponse> {
                 display: 'flex',
                 padding: '8px 16px',
                 borderRadius: '10px',
-                backgroundColor: '#14161B',
+                backgroundColor: '#18181B',
                 border: '1px solid #27272A',
                 fontSize: '16px',
                 fontWeight: 600,

@@ -1,6 +1,7 @@
 import { createOgCardResponse } from '@/lib/og-card';
+import { SITE_CONFIG } from '@/lib/site-config';
 
-export const alt = 'Daniel Theo Santoso — Portofolio Frontend Programmer';
+export const alt = SITE_CONFIG.ogImageAlt;
 export const size = {
   width: 1200,
   height: 630,

@@ -1,18 +1,15 @@
-const DEFAULT_SITE_URL =
-  'https://ais-pre-dif3f56on34skfo7csf7zo-622233591882.asia-northeast1.run.app';
+const DEFAULT_SITE_URL = 'https://danieltheo.dev';
 
 /**
  * Resolves and normalizes the canonical site URL from environment variables,
  * ignoring placeholder values and stripping any trailing slash.
  */
-export function getSiteUrl(): string {
+export function getSiteUrl(env: Record<string, string | undefined> = process.env): string {
   const candidates = [
-    process.env.NEXT_PUBLIC_SITE_URL,
-    process.env.APP_URL,
-    process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : undefined,
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+    env.NEXT_PUBLIC_SITE_URL,
+    env.APP_URL,
+    env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined,
+    env.VERCEL_URL ? `https://${env.VERCEL_URL}` : undefined,
     DEFAULT_SITE_URL,
   ];
 
@@ -35,28 +32,34 @@ export function getSiteUrl(): string {
 export const SITE_CONFIG = {
   name: 'Daniel Theo Santoso',
   shortName: 'D.',
-  role: 'Frontend Programmer',
-  title: 'Daniel Theo Santoso — Portofolio Frontend Programmer',
+  brandName: 'Daniel Theo',
+  role: 'Lead Frontend Engineer',
+  title: 'Daniel Theo Santoso — Lead Frontend Engineer',
   description:
-    'Portofolio resmi Daniel Theo Santoso, Frontend Programmer di Surakarta. Jelajahi proyek aplikasi web modern berbasis React, Next.js, dan TypeScript.',
-  locale: 'id_ID',
-  language: 'id-ID',
-  location: 'Surakarta, Jawa Tengah, Indonesia',
+    'Lead Frontend Engineer specializing in React, Next.js, and TypeScript—turning complex product systems and Figma designs into fast, maintainable UI.',
+  locale: 'en_US',
+  language: 'en-US',
+  location: 'Surakarta, Indonesia',
+  timezone: 'UTC+7',
   email: 'danieltheo.73@gmail.com',
   linkedinUrl: 'https://www.linkedin.com/in/daniel-theo-santoso/',
   githubUrl: 'https://github.com/Moscart',
-  ogImageAlt: 'Daniel Theo Santoso — Frontend Programmer (React, Next.js & TypeScript)',
-  profileImagePath: '/images/daniel-avatar.png',
+  mediumUrl: 'https://medium.com/@daniel.theo',
+  bettyUrl: 'https://betty.id',
+  ogImageAlt: 'Daniel Theo Santoso — Lead Frontend Engineer (React, Next.js & TypeScript)',
+  profileImagePath: '/images/daniel-profile.webp',
+  ogProfileImagePath: '/images/daniel-profile-og.jpg',
   keywords: [
     'Daniel Theo Santoso',
+    'Lead Frontend Engineer',
     'Frontend Programmer',
-    'Frontend Developer Indonesia',
-    'Web Developer Surakarta',
     'React Developer',
     'Next.js Developer',
     'TypeScript',
     'Tailwind CSS',
+    'Shadcn UI',
+    'TanStack Query',
     'PT Daya Rekadigital Indonesia',
-    'Portofolio Frontend',
+    'Surakarta',
   ],
 } as const;

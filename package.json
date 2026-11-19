@@ -1,5 +1,5 @@
 {
-  "name": "ai-studio-applet",
+  "name": "daniel-theo-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "node --test \"src/**/*.test.ts\"",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "clean": "next clean",
@@ -15,8 +16,6 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "lenis": "^1.3.27",
-    "lucide-react": "^0.553.0",
     "motion": "^12.23.24",
     "next": "16.4.6",
     "react": "19.3.1",
