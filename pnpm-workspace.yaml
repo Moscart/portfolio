@@ -1,4 +1,6 @@
 allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
   '@tailwindcss/oxide': true
 overrides:
   '@types/react': 19.3.0

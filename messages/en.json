@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "title": "Daniel Theo Santoso — Lead Frontend Engineer",
+    "description": "Specializing in React, Next.js, and TypeScript—turning complex product systems and Figma designs into fast, maintainable UI."
+  },
+  "nav": {
+    "ariaLabel": "Primary navigation",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "work": "Work",
+    "experience": "Experience",
+    "writing": "Writing",
+    "contact": "Contact"
+  },
+  "hero": {
+    "fullName": "Daniel Theo Santoso",
+    "roleLocationDesktop": "Lead Frontend Engineer · Surakarta, ID (UTC+7)",
+    "roleLocationMobile": "Lead Frontend Engineer · UTC+7",
+    "availability": "Available for remote roles",
+    "h1": "Clean frontend architecture for fast, modern web apps.",
+    "bio": "Specializing in React, Next.js, and TypeScript—turning complex product systems and Figma designs into fast, maintainable UI.",
+    "ctaPrimary": "Get in touch",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "medium": "Medium",
+    "stackLabel": "CORE STACK",
+    "credibilityDesktop": "3+ yrs experience · B.Sc. Informatics (3.95 GPA)",
+    "credibilityMobile": "3+ yrs exp · B.Sc. Informatics (3.95 GPA)"
+  },
+  "work": {
+    "eyebrow": "SELECTED WORK",
+    "heading": "Recent projects",
+    "featuredBadge": "Featured",
+    "outcomesLabel": "KEY OUTCOMES",
+    "viewCaseStudy": "View case study",
+    "projects": {
+      "betty": {
+        "meta": "betty.id · 2025 – Present",
+        "title": "Betty Architecture & Enterprise Dashboard",
+        "description": "Restructured the frontend codebase into a feature-first architecture and built the centralized dashboard with an internal Shadcn UI library.",
+        "outcome1": "Feature-first modular codebase",
+        "outcome2": "Unified REST cache & form state",
+        "outcome3": "Bilingual EN/ID & CI lint gates"
+      },
+      "rekadigi": {
+        "category": "Landing Pages",
+        "year": "2025",
+        "title": "Rekadigi & DRI Web",
+        "description": "Figma-to-Next.js marketing sites with bilingual EN/ID routing and Lighthouse tuning."
+      },
+      "cinematch": {
+        "category": "Product",
+        "year": "2024",
+        "title": "Cinematch",
+        "description": "Film discovery app tailoring movie watchlists by genre and era."
+      },
+      "client-suite": {
+        "category": "Client Work",
+        "year": "2024–2025",
+        "title": "Client Web Suite",
+        "description": "Responsive web interfaces built across industries with design and backend teams."
+      }
+    }
+  },
+  "caseStudy": {
+    "badge": "Case Study",
+    "meta": "betty.id · 2025 – Present",
+    "titleDesktop": "Betty Architecture & Enterprise Dashboard",
+    "titleMobile": "Betty Architecture & Dashboard",
+    "summaryDesktop": "Led the frontend restructuring of Betty into a feature-first, module-isolated architecture—cutting onboarding friction while delivering the centralized enterprise dashboard and internal Shadcn UI component kit.",
+    "summaryMobile": "Feature-first modular restructuring and centralized enterprise dashboard with an internal Shadcn UI library.",
+    "highlightsLabel": "ARCHITECTURAL HIGHLIGHTS",
+    "highlightDesktop1": "Feature-first domain modules eliminating cross-feature spaghetti imports",
+    "highlightDesktop2": "TanStack Query + Axios + Redux centralized sync with React Hook Form & Joi",
+    "highlightDesktop3": "Bilingual EN/ID routing (next-intl) + Husky & lint-staged CI pre-commit gates",
+    "highlightMobile1": "Feature-first modular codebase",
+    "highlightMobile2": "Unified REST cache & form state",
+    "highlightMobile3": "Bilingual EN/ID & CI lint gates",
+    "escHint": "ESC to close",
+    "close": "Close",
+    "visitCta": "Visit betty.id"
+  },
+  "experience": {
+    "eyebrow": "EXPERIENCE",
+    "heading": "Work history",
+    "currentBadge": "Current",
+    "items": {
+      "rekadigi-lead": {
+        "role": "Lead Frontend Programmer",
+        "company": "PT Daya Rekadigital Indonesia (Rekadigi)",
+        "period": "Jul 2025 – Present",
+        "summary": "Leading Betty’s modular frontend architecture, centralized dashboard, and internal Shadcn UI library."
+      },
+      "stt-warga": {
+        "role": "Staff IT",
+        "company": "Sekolah Tinggi Teknologi Warga",
+        "period": "Jan – Jul 2025",
+        "summary": "Migrated institutional web apps from CodeIgniter 3 to 4 with cleaner modular project structure."
+      },
+      "freelance-remote": {
+        "role": "Frontend Web Developer",
+        "company": "Freelance · Remote",
+        "period": "Aug 2024 – Jan 2025",
+        "summary": "Delivered responsive client web interfaces closely with product designers and backend engineers."
+      },
+      "javan-react": {
+        "role": "Frontend Programmer (React)",
+        "company": "PT Javan Cipta Solusi",
+        "period": "Aug – Dec 2023",
+        "summary": "Built dynamic React.js enterprise interfaces integrated smoothly with Laravel backends."
+      }
+    }
+  },
+  "writing": {
+    "eyebrow": "WRITING",
+    "heading": "Notes on Medium",
+    "allArticles": "All articles on Medium",
+    "readArticle": "Read article",
+    "enterHint": "Enter ↵",
+    "progressiveNote": "New notes on React, Next.js architecture, and frontend tooling published gradually.",
+    "followHandle": "Follow @daniel.theo",
+    "articles": {
+      "husky-lint-staged": {
+        "category": "Workflow & Code Quality · ID",
+        "title": "Why Every Project Needs Husky & lint-staged",
+        "excerpt": "Practical guide to automating ESLint, Prettier, and pre-commit checks across frontend teams."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "CONTACT",
+    "availabilityDesktop": "Available · Surakarta, ID (UTC+7)",
+    "availabilityMobile": "Available · UTC+7",
+    "heading": "Let’s build something clear and fast.",
+    "subcopy": "Open to remote frontend engineering roles and Next.js architecture consulting.",
+    "emailCta": "Email Daniel",
+    "copiedInline": "Copied to clipboard!"
+  },
+  "footer": {
+    "copyright": "© 2026 Daniel Theo Santoso · Surakarta, Indonesia",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "medium": "Medium"
+  },
+  "drawer": {
+    "eyebrow": "NAVIGATION",
+    "appearanceLabel": "Appearance & Language"
+  },
+  "toast": {
+    "emailCopied": "Email copied to clipboard",
+    "durationMeta": "2s"
+  },
+  "theme": {
+    "toggleLabel": "Toggle color theme",
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode"
+  },
+  "language": {
+    "groupLabel": "Language selection",
+    "en": "EN",
+    "id": "ID"
+  }
+}

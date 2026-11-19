@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "title": "Daniel Theo Santoso — Lead Frontend Engineer",
+    "description": "Berfokus pada React, Next.js, dan TypeScript—mengubah sistem produk dan desain Figma menjadi antarmuka yang cepat serta terawat."
+  },
+  "nav": {
+    "ariaLabel": "Navigasi utama",
+    "openMenu": "Buka menu navigasi",
+    "closeMenu": "Tutup menu navigasi",
+    "work": "Karya",
+    "experience": "Pengalaman",
+    "writing": "Tulisan",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "fullName": "Daniel Theo Santoso",
+    "roleLocationDesktop": "Lead Frontend Engineer · Surakarta, ID (UTC+7)",
+    "roleLocationMobile": "Lead Frontend Engineer · UTC+7",
+    "availability": "Tersedia untuk proyek remote",
+    "h1": "Arsitektur frontend rapi untuk web modern yang cepat.",
+    "bio": "Berfokus pada React, Next.js, dan TypeScript—mengubah sistem produk dan desain Figma menjadi antarmuka yang cepat serta terawat.",
+    "ctaPrimary": "Hubungi saya",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "medium": "Medium",
+    "stackLabel": "STACK UTAMA",
+    "credibilityDesktop": "3+ thn pengalaman · S1 Informatika (IPK 3.95)",
+    "credibilityMobile": "3+ thn exp · S1 Informatika (IPK 3.95)"
+  },
+  "work": {
+    "eyebrow": "KARYA PILIHAN",
+    "heading": "Proyek terbaru",
+    "featuredBadge": "Unggulan",
+    "outcomesLabel": "HASIL UTAMA",
+    "viewCaseStudy": "Lihat studi kasus",
+    "projects": {
+      "betty": {
+        "meta": "betty.id · 2025 – Sekarang",
+        "title": "Arsitektur Betty & Dashboard Enterprise",
+        "description": "Merestrukturisasi codebase frontend menjadi arsitektur feature-first dan membangun dashboard terpusat dengan library Shadcn UI internal.",
+        "outcome1": "Codebase modular berbasis fitur",
+        "outcome2": "Cache REST & validasi form terpadu",
+        "outcome3": "Routing ID/EN & CI lint otomatis"
+      },
+      "rekadigi": {
+        "category": "Landing Page",
+        "year": "2025",
+        "title": "Web Rekadigi & DRI",
+        "description": "Situs marketing Figma ke Next.js dengan routing ID/EN dan optimasi Lighthouse."
+      },
+      "cinematch": {
+        "category": "Produk",
+        "year": "2024",
+        "title": "Cinematch",
+        "description": "Aplikasi penemuan film dengan daftar tontonan personal sesuai genre dan era."
+      },
+      "client-suite": {
+        "category": "Klien",
+        "year": "2024–2025",
+        "title": "Rangkaian Web Klien",
+        "description": "Antarmuka web responsif lintas industri bersama tim desain dan backend."
+      }
+    }
+  },
+  "caseStudy": {
+    "badge": "Studi Kasus",
+    "meta": "betty.id · 2025 – Sekarang",
+    "titleDesktop": "Arsitektur Betty & Dashboard Enterprise",
+    "titleMobile": "Arsitektur Betty & Dashboard",
+    "summaryDesktop": "Memimpin restrukturisasi frontend Betty menjadi arsitektur feature-first yang terisolasi per modul—mengurangi hambatan onboarding sekaligus menghadirkan dashboard enterprise terpusat dan kit komponen Shadcn UI internal.",
+    "summaryMobile": "Restrukturisasi modular berbasis fitur dan dashboard enterprise terpusat dengan library Shadcn UI internal.",
+    "highlightsLabel": "SOROTAN ARSITEKTUR",
+    "highlightDesktop1": "Modul domain berbasis fitur untuk menghilangkan ketergantungan impor antar-fitur",
+    "highlightDesktop2": "Sinkronisasi terpusat TanStack Query + Axios + Redux dengan React Hook Form & Joi",
+    "highlightDesktop3": "Routing dwibahasa ID/EN (next-intl) + gerbang pre-commit CI Husky & lint-staged",
+    "highlightMobile1": "Codebase modular berbasis fitur",
+    "highlightMobile2": "Cache REST & validasi form terpadu",
+    "highlightMobile3": "Routing ID/EN & CI lint otomatis",
+    "escHint": "ESC untuk tutup",
+    "close": "Tutup",
+    "visitCta": "Kunjungi betty.id"
+  },
+  "experience": {
+    "eyebrow": "PENGALAMAN",
+    "heading": "Riwayat kerja",
+    "currentBadge": "Saat ini",
+    "items": {
+      "rekadigi-lead": {
+        "role": "Lead Frontend Programmer",
+        "company": "PT Daya Rekadigital Indonesia (Rekadigi)",
+        "period": "Jul 2025 – Sekarang",
+        "summary": "Memimpin arsitektur frontend modular Betty, dashboard terpusat, dan library Shadcn UI internal."
+      },
+      "stt-warga": {
+        "role": "Staff IT",
+        "company": "Sekolah Tinggi Teknologi Warga",
+        "period": "Jan – Jul 2025",
+        "summary": "Memigrasikan aplikasi web institusi dari CodeIgniter 3 ke 4 dengan struktur proyek lebih rapi."
+      },
+      "freelance-remote": {
+        "role": "Frontend Web Developer",
+        "company": "Freelance · Remote",
+        "period": "Agu 2024 – Jan 2025",
+        "summary": "Membangun antarmuka web responsif klien bersama desainer produk dan tim backend."
+      },
+      "javan-react": {
+        "role": "Frontend Programmer (React)",
+        "company": "PT Javan Cipta Solusi",
+        "period": "Agu – Des 2023",
+        "summary": "Mengembangkan antarmuka enterprise React.js yang terintegrasi rapi dengan backend Laravel."
+      }
+    }
+  },
+  "writing": {
+    "eyebrow": "TULISAN",
+    "heading": "Catatan di Medium",
+    "allArticles": "Semua artikel di Medium",
+    "readArticle": "Baca artikel",
+    "enterHint": "Enter ↵",
+    "progressiveNote": "Catatan baru seputar React, arsitektur Next.js, dan tooling frontend ditambahkan bertahap.",
+    "followHandle": "Ikuti @daniel.theo",
+    "articles": {
+      "husky-lint-staged": {
+        "category": "Workflow & Kualitas Kode · ID",
+        "title": "Why Every Project Needs Husky & lint-staged",
+        "excerpt": "Panduan praktis mengotomatisasi ESLint, Prettier, dan pemeriksaan pre-commit di tim frontend."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "KONTAK",
+    "availabilityDesktop": "Tersedia · Surakarta, ID (UTC+7)",
+    "availabilityMobile": "Tersedia · UTC+7",
+    "heading": "Mari bangun web yang rapi dan cepat.",
+    "subcopy": "Terbuka untuk peran frontend engineering remote maupun konsultasi arsitektur Next.js.",
+    "emailCta": "Email Daniel",
+    "copiedInline": "Tersalin ke clipboard!"
+  },
+  "footer": {
+    "copyright": "© 2026 Daniel Theo Santoso · Surakarta, Indonesia",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "medium": "Medium"
+  },
+  "drawer": {
+    "eyebrow": "NAVIGASI",
+    "appearanceLabel": "Tampilan & Bahasa"
+  },
+  "toast": {
+    "emailCopied": "Email tersalin ke clipboard",
+    "durationMeta": "2s"
+  },
+  "theme": {
+    "toggleLabel": "Ganti tema warna",
+    "switchToDark": "Beralih ke mode gelap",
+    "switchToLight": "Beralih ke mode terang"
+  },
+  "language": {
+    "groupLabel": "Pilihan bahasa",
+    "en": "EN",
+    "id": "ID"
+  }
+}
