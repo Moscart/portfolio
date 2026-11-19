@@ -1,3 +1,5 @@
+import { PortfolioShell } from '@/components/PortfolioShell';
+
 export default function HomePage() {
-  return <main />;
+  return <PortfolioShell />;
 }
