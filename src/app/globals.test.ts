@@ -42,7 +42,7 @@ test('globals.css implements FigCraft Design System light/dark tokens, 1440px br
     '--primary: #f54900',
     '--background: #ffffff',
     '--background: #09090b',
-    '--secondary: #f8fafc',
+    '--secondary: #f7f7f8',
     '--secondary: #111113',
     '--card: #18181b',
     '--accent-foreground: #c2410c',
