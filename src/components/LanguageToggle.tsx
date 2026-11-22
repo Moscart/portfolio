@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useTransition } from 'react';
-import { useRouter } from 'next/navigation';
-import { useLocale, useTranslations } from 'next-intl';
+import React from 'react';
+import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
-import { setLocaleAction } from '@/i18n/actions';
+import { useLocaleSwitch } from '@/components/LocaleProvider';
 import { LOCALES, type Locale } from '@/i18n/config';
 import { cn } from '@/lib/utils';
 
@@ -13,22 +12,13 @@ interface LanguageToggleProps {
 }
 
 export function LanguageToggle({ className }: LanguageToggleProps) {
-  const locale = useLocale() as Locale;
+  const { locale, setLocale } = useLocaleSwitch();
   const t = useTranslations('language');
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
   const activeIndex = Math.max(0, LOCALES.indexOf(locale));
 
   const handleSelect = (nextLocale: Locale) => {
-    if (nextLocale === locale || isPending) return;
-    startTransition(async () => {
-      try {
-        await setLocaleAction(nextLocale);
-        router.refresh();
-      } catch {
-        // Gracefully keep current locale if offline or Server Action fails
-      }
-    });
+    if (nextLocale === locale) return;
+    setLocale(nextLocale);
   };
 
   return (
@@ -54,11 +44,10 @@ export function LanguageToggle({ className }: LanguageToggleProps) {
             <button
               key={item}
               type="button"
-              disabled={isPending}
               aria-pressed={isActive}
               onClick={() => handleSelect(item)}
               className={cn(
-                'relative inline-flex h-full min-w-8 cursor-pointer items-center justify-center rounded-sm px-2 font-mono text-xs font-medium transition-colors duration-150 select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-60',
+                'relative inline-flex h-full min-w-8 cursor-pointer items-center justify-center rounded-sm px-2 font-mono text-xs font-medium transition-colors duration-150 select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
                 isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
               )}
             >

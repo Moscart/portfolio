@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import { Bricolage_Grotesque, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages, getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { LocaleProvider } from '@/components/LocaleProvider';
 import { MotionProvider } from '@/components/MotionProvider';
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { resolveLocale } from '@/i18n/config';
 import { WRITING_ARTICLES } from '@/lib/portfolio-data';
 import { getSiteUrl, SITE_CONFIG } from '@/lib/site-config';
 import { getThemeInitScript } from '@/lib/theme-logic';
@@ -235,8 +236,7 @@ function buildJsonLd(locale: string, title: string, description: string) {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const locale = await getLocale();
-  const messages = await getMessages();
+  const locale = resolveLocale(await getLocale());
   const tMeta = await getTranslations('meta');
   const jsonLd = buildJsonLd(locale, tMeta('title'), tMeta('description'));
 
@@ -264,13 +264,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
           }}
         />
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <LocaleProvider initialLocale={locale}>
           <ThemeProvider>
             <MotionProvider>
               <SmoothScrollProvider>{children}</SmoothScrollProvider>
             </MotionProvider>
           </ThemeProvider>
-        </NextIntlClientProvider>
+        </LocaleProvider>
       </body>
     </html>
   );
