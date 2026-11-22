@@ -5,6 +5,7 @@ import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 import { MotionProvider } from '@/components/MotionProvider';
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { WRITING_ARTICLES } from '@/lib/portfolio-data';
 import { getSiteUrl, SITE_CONFIG } from '@/lib/site-config';
 import { getThemeInitScript } from '@/lib/theme-logic';
 import './globals.css';
@@ -46,6 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('meta');
   const title = t('title');
   const description = t('description');
+  const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 
   return {
     metadataBase: new URL(siteUrl),
@@ -54,6 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s | ${SITE_CONFIG.name}`,
     },
     description,
+    applicationName: SITE_CONFIG.name,
     keywords: [...SITE_CONFIG.keywords],
     authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.linkedinUrl }],
     creator: SITE_CONFIG.name,
@@ -66,6 +69,12 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     alternates: {
       canonical: '/',
+    },
+    verification: {
+      ...(googleVerification ? { google: googleVerification } : {}),
+      other: {
+        me: [SITE_CONFIG.githubUrl, SITE_CONFIG.linkedinUrl, SITE_CONFIG.mediumUrl],
+      },
     },
     robots: {
       index: true,
@@ -81,6 +90,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: locale === 'id' ? 'id_ID' : 'en_US',
+      alternateLocale: locale === 'id' ? ['en_US'] : ['id_ID'],
       url: '/',
       siteName: SITE_CONFIG.name,
       title,
@@ -94,7 +104,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-function buildJsonLd(locale: string) {
+function buildJsonLd(locale: string, title: string, description: string) {
   const inLanguage = locale === 'id' ? 'id-ID' : 'en-US';
   return {
     '@context': 'https://schema.org',
@@ -104,7 +114,8 @@ function buildJsonLd(locale: string) {
         '@id': `${siteUrl}/#website`,
         url: siteUrl,
         name: SITE_CONFIG.name,
-        description: SITE_CONFIG.description,
+        alternateName: `${SITE_CONFIG.brandName}.`,
+        description,
         inLanguage,
         publisher: {
           '@id': `${siteUrl}/#person`,
@@ -114,15 +125,18 @@ function buildJsonLd(locale: string) {
         '@type': 'ProfilePage',
         '@id': `${siteUrl}/#webpage`,
         url: siteUrl,
-        name: SITE_CONFIG.title,
-        description: SITE_CONFIG.description,
+        name: title,
+        description,
         inLanguage,
+        dateModified: '2026-11-22',
         isPartOf: {
           '@id': `${siteUrl}/#website`,
         },
         primaryImageOfPage: {
           '@type': 'ImageObject',
           url: `${siteUrl}/opengraph-image`,
+          width: 1200,
+          height: 630,
         },
         mainEntity: {
           '@id': `${siteUrl}/#person`,
@@ -132,7 +146,9 @@ function buildJsonLd(locale: string) {
         '@type': 'Person',
         '@id': `${siteUrl}/#person`,
         name: SITE_CONFIG.name,
+        alternateName: SITE_CONFIG.handle,
         jobTitle: SITE_CONFIG.role,
+        description,
         email: `mailto:${SITE_CONFIG.email}`,
         image: `${siteUrl}${SITE_CONFIG.profileImagePath}`,
         url: siteUrl,
@@ -145,6 +161,7 @@ function buildJsonLd(locale: string) {
         worksFor: {
           '@type': 'Organization',
           name: 'PT Daya Rekadigital Indonesia (Rekadigi)',
+          url: SITE_CONFIG.rekadigiUrl,
         },
         alumniOf: [
           {
@@ -156,6 +173,7 @@ function buildJsonLd(locale: string) {
             name: 'SMK Negeri 2 Surakarta',
           },
         ],
+        knowsLanguage: ['Indonesian', 'English'],
         knowsAbout: [
           'React',
           'Next.js',
@@ -163,8 +181,54 @@ function buildJsonLd(locale: string) {
           'Tailwind CSS',
           'Shadcn UI',
           'TanStack Query',
+          'next-intl',
+          'Feature-First Architecture',
+          'Core Web Vitals',
+          'Docker',
         ],
         sameAs: [SITE_CONFIG.linkedinUrl, SITE_CONFIG.githubUrl, SITE_CONFIG.mediumUrl],
+      },
+      {
+        '@type': 'SoftwareSourceCode',
+        name: 'next-boilerplate',
+        description:
+          'Minimal Next.js 16 boilerplate with TypeScript, Tailwind CSS v4, ESLint, Prettier, Husky, and Docker standalone setup.',
+        codeRepository: 'https://github.com/Moscart/next-boilerplate',
+        programmingLanguage: 'TypeScript',
+        runtimePlatform: 'Next.js 16',
+        author: {
+          '@id': `${siteUrl}/#person`,
+        },
+      },
+      {
+        '@type': 'ItemList',
+        name: 'Published Articles on Medium',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            item: {
+              '@type': 'Article',
+              headline:
+                'Jangan Cuma Bagus di Luar, Rapi Juga di Dalam: Kenalan dengan Feature-First Architecture di Next.js',
+              url: WRITING_ARTICLES[0].url,
+              inLanguage: 'id-ID',
+              author: { '@id': `${siteUrl}/#person` },
+            },
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            item: {
+              '@type': 'Article',
+              headline:
+                'Dulu Bingung Ini File Apa, Sekarang Wajib Ada di Tiap Project: Mengenal Husky dan Lint-Staged',
+              url: WRITING_ARTICLES[1].url,
+              inLanguage: 'id-ID',
+              author: { '@id': `${siteUrl}/#person` },
+            },
+          },
+        ],
       },
     ],
   };
@@ -173,7 +237,8 @@ function buildJsonLd(locale: string) {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale();
   const messages = await getMessages();
-  const jsonLd = buildJsonLd(locale);
+  const tMeta = await getTranslations('meta');
+  const jsonLd = buildJsonLd(locale, tMeta('title'), tMeta('description'));
 
   return (
     <html
