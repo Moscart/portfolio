@@ -36,46 +36,46 @@
     "projects": {
       "betty": {
         "meta": "betty.id · 2025 – Sekarang",
-        "title": "Arsitektur Betty & Dashboard Enterprise",
-        "description": "Merestrukturisasi codebase frontend menjadi arsitektur feature-first dan membangun dashboard terpusat dengan library Shadcn UI internal.",
-        "outcome1": "Codebase modular berbasis fitur",
-        "outcome2": "Cache REST & validasi form terpadu",
-        "outcome3": "Routing ID/EN & CI lint otomatis"
+        "title": "Betty — Arsitektur & Dashboard Enterprise",
+        "description": "Merestrukturisasi Betty ke arsitektur feature-first, mengganti Redux legacy dengan URL-driven state, dan membangun ulang library Shadcn UI.",
+        "outcome1": "Arsitektur modular feature-first",
+        "outcome2": "URL-driven state (hapus Redux)",
+        "outcome3": "Refaktor Shadcn UI & Husky gates"
+      },
+      "next-boilerplate": {
+        "category": "Open Source",
+        "year": "2026",
+        "title": "next-boilerplate",
+        "description": "Template Next.js 16 siap pakai dengan TypeScript, Tailwind v4, Husky, dan Docker."
       },
       "rekadigi": {
         "category": "Landing Page",
         "year": "2025",
         "title": "Web Rekadigi & DRI",
-        "description": "Situs marketing Figma ke Next.js dengan routing ID/EN dan optimasi Lighthouse."
+        "description": "Situs Next.js dri.co.id & rekadigi.id dengan next-intl ID/EN, SEO, dan Web Vitals."
       },
-      "cinematch": {
-        "category": "Produk",
+      "space-tourism": {
+        "category": "Eksplorasi UI",
         "year": "2024",
-        "title": "Cinematch",
-        "description": "Aplikasi penemuan film dengan daftar tontonan personal sesuai genre dan era."
-      },
-      "client-suite": {
-        "category": "Klien",
-        "year": "2024–2025",
-        "title": "Rangkaian Web Klien",
-        "description": "Antarmuka web responsif lintas industri bersama tim desain dan backend."
+        "title": "Space Tourism",
+        "description": "Situs multi-halaman Next.js dengan slicing responsif, tab interaktif, dan Shadcn UI."
       }
     }
   },
   "caseStudy": {
     "badge": "Studi Kasus",
     "meta": "betty.id · 2025 – Sekarang",
-    "titleDesktop": "Arsitektur Betty & Dashboard Enterprise",
-    "titleMobile": "Arsitektur Betty & Dashboard",
-    "summaryDesktop": "Memimpin restrukturisasi frontend Betty menjadi arsitektur feature-first yang terisolasi per modul—mengurangi hambatan onboarding sekaligus menghadirkan dashboard enterprise terpusat dan kit komponen Shadcn UI internal.",
-    "summaryMobile": "Restrukturisasi modular berbasis fitur dan dashboard enterprise terpusat dengan library Shadcn UI internal.",
+    "titleDesktop": "Betty — Arsitektur & Dashboard",
+    "titleMobile": "Betty — Arsitektur & Dashboard",
+    "summaryDesktop": "Merestrukturisasi Betty menjadi arsitektur feature-first—mengganti Redux legacy dengan URL-driven state, merefaktor komponen manual ke library Shadcn UI yang disesuaikan, dan mempercepat onboarding tim.",
+    "summaryMobile": "Restrukturisasi feature-first, penghapusan Redux ke URL-driven state, dan library komponen Shadcn UI internal.",
     "highlightsLabel": "SOROTAN ARSITEKTUR",
-    "highlightDesktop1": "Modul domain berbasis fitur untuk menghilangkan ketergantungan impor antar-fitur",
-    "highlightDesktop2": "Sinkronisasi terpusat TanStack Query + Axios + Redux dengan React Hook Form & Joi",
-    "highlightDesktop3": "Routing dwibahasa ID/EN (next-intl) + gerbang pre-commit CI Husky & lint-staged",
-    "highlightMobile1": "Codebase modular berbasis fitur",
-    "highlightMobile2": "Cache REST & validasi form terpadu",
-    "highlightMobile3": "Routing ID/EN & CI lint otomatis",
+    "highlightDesktop1": "Modul domain berbasis fitur yang memusatkan logika dan mempercepat onboarding",
+    "highlightDesktop2": "Mengganti Redux legacy dengan URL-driven & React state untuk memangkas boilerplate dan ukuran bundle",
+    "highlightDesktop3": "Refaktor penuh Shadcn UI, TanStack Query + form Joi, next-intl, dan gerbang Husky",
+    "highlightMobile1": "Arsitektur modular feature-first",
+    "highlightMobile2": "URL-driven state (hapus Redux)",
+    "highlightMobile3": "Refaktor Shadcn UI & Husky gates",
     "escHint": "ESC untuk tutup",
     "close": "Tutup",
     "visitCta": "Kunjungi betty.id"
@@ -89,25 +89,31 @@
         "role": "Lead Frontend Programmer",
         "company": "PT Daya Rekadigital Indonesia (Rekadigi)",
         "period": "Jul 2025 – Sekarang",
-        "summary": "Memimpin arsitektur frontend modular Betty, dashboard terpusat, dan library Shadcn UI internal."
+        "summary": "Mengembangkan dri.co.id, rekadigi.id, dan betty.id. Memimpin refaktor feature-first, mengganti Redux ke URL-driven state, library Shadcn UI, serta mentoring tim."
       },
       "stt-warga": {
         "role": "Staff IT",
         "company": "Sekolah Tinggi Teknologi Warga",
         "period": "Jan – Jul 2025",
-        "summary": "Memigrasikan aplikasi web institusi dari CodeIgniter 3 ke 4 dengan struktur proyek lebih rapi."
+        "summary": "Mengelola web kampus dan operasional IT secara mandiri. Memigrasikan platform e-learning dari CodeIgniter 3 ke 4, mengoptimalkan query database, dan merawat situs CI3 legacy."
       },
       "freelance-remote": {
         "role": "Frontend Web Developer",
-        "company": "Freelance · Remote",
+        "company": "Freelance · Pekerja Lepas",
         "period": "Agu 2024 – Jan 2025",
-        "summary": "Membangun antarmuka web responsif klien bersama desainer produk dan tim backend."
+        "summary": "Membangun UI produksi responsif dengan Next.js, Tailwind CSS, dan Laravel Blade untuk ruangdiri.id, widartoimpact.com, dan saldogame.com."
       },
       "javan-react": {
         "role": "Frontend Programmer (React)",
         "company": "PT Javan Cipta Solusi",
         "period": "Agu – Des 2023",
-        "summary": "Mengembangkan antarmuka enterprise React.js yang terintegrasi rapi dengan backend Laravel."
+        "summary": "Berlanjut dari magang ke kontrak untuk Sinergi KPK. Membangun UI alur persetujuan BPMN di React.js dan menyempurnakan query Laravel Eloquent dalam tim Agile."
+      },
+      "duxeos-intern": {
+        "role": "Web Developer (Magang)",
+        "company": "Duxeos Software House",
+        "period": "Jul – Des 2019",
+        "summary": "Membangun situs resmi dan panel admin CMS CodeIgniter 3 untuk SMA Negeri 8 & SMP Negeri 8 Surakarta serta profil perusahaan dengan MySQL dan Bootstrap."
       }
     }
   },
@@ -117,13 +123,18 @@
     "allArticles": "Semua artikel di Medium",
     "readArticle": "Baca artikel",
     "enterHint": "Enter ↵",
-    "progressiveNote": "Catatan baru seputar React, arsitektur Next.js, dan tooling frontend ditambahkan bertahap.",
+    "progressiveNote": "Dua artikel sudah terbit—catatan lain seputar React, arsitektur Next.js, dan tooling frontend menyusul bertahap.",
     "followHandle": "Ikuti @daniel.theo",
     "articles": {
+      "feature-first-nextjs": {
+        "category": "Arsitektur · Next.js · ID",
+        "title": "Jangan Cuma Bagus di Luar, Rapi Juga di Dalam: Feature-First di Next.js",
+        "excerpt": "Mengapa folder berbasis fitur di Next.js mempermudah onboarding dan menjaga kode tim tetap terisolasi."
+      },
       "husky-lint-staged": {
         "category": "Workflow & Kualitas Kode · ID",
-        "title": "Why Every Project Needs Husky & lint-staged",
-        "excerpt": "Panduan praktis mengotomatisasi ESLint, Prettier, dan pemeriksaan pre-commit di tim frontend."
+        "title": "Dulu Bingung Ini File Apa, Sekarang Wajib Ada: Mengenal Husky & lint-staged",
+        "excerpt": "Otomatisasi ESLint, Prettier, dan pengecekan TypeScript sebelum commit agar kode tim tetap rapi."
       }
     }
   },
