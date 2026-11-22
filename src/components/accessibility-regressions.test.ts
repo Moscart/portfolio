@@ -78,3 +78,20 @@ test('LanguageToggle uses persistent transform slide (no layoutId) and sticky Na
     'Sticky Navbar header must be a motion.header with layoutRoot so layoutId children animate relative to it',
   );
 });
+
+test('MobileNavDrawer overrides SheetContent right-side width and max-width constraints to stay full screen width', () => {
+  const drawer = readFileSync(
+    join(process.cwd(), 'src', 'components', 'MobileNavDrawer.tsx'),
+    'utf8',
+  );
+  assert.ok(
+    drawer.includes('data-[side=right]:w-full') &&
+      drawer.includes('data-[side=right]:sm:max-w-none'),
+    'MobileNavDrawer must override SheetContent data-[side=right]:w-3/4 and sm:max-w-sm for full-width mobile coverage',
+  );
+  assert.equal(
+    drawer.includes('max-w-[375px]'),
+    false,
+    'MobileNavDrawer must not cap width at 375px',
+  );
+});

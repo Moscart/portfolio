@@ -36,7 +36,7 @@ export function MobileNavDrawer({ open, onOpenChange, activeSection }: MobileNav
       <SheetContent
         side="right"
         showCloseButton={false}
-        className="w-full max-w-[375px] gap-0 border-l border-border bg-background p-0 text-foreground"
+        className="w-full max-w-none gap-0 border-0 bg-background p-0 text-foreground data-[side=right]:w-full data-[side=right]:border-l-0 data-[side=right]:sm:max-w-none"
       >
         <SheetTitle className="sr-only">{tNav('ariaLabel')}</SheetTitle>
         <SheetDescription className="sr-only">{tDrawer('eyebrow')}</SheetDescription>
