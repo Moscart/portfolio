@@ -21,16 +21,16 @@
   --popover-foreground: #09090b;
   --primary: #f54900;
   --primary-foreground: #ffffff;
-  --secondary: #f7f7f8;
+  --secondary: #f8fafc;
   --secondary-foreground: #18181b;
-  --muted: #f7f7f8;
+  --muted: #f8fafc;
   --muted-foreground: #71717a;
-  --accent: #efeff1;
+  --accent: #f1f5f9;
   --accent-foreground: #c2410c;
   --destructive: #e7000b;
   --destructive-foreground: #ffffff;
   --border: #e4e4e7;
-  --border-subtle: #ececef;
+  --border-subtle: #e9eff5;
   --input: #e4e4e7;
   --ring: #f54900;
 
