@@ -128,7 +128,7 @@ function buildJsonLd(locale: string, title: string, description: string) {
         name: title,
         description,
         inLanguage,
-        dateModified: '2026-11-22',
+        dateModified: '2026-11-22T20:20:00+07:00',
         isPartOf: {
           '@id': `${siteUrl}/#website`,
         },

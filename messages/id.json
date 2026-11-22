@@ -148,10 +148,19 @@
     "copiedInline": "Tersalin ke clipboard!"
   },
   "footer": {
-    "copyright": "© 2026 Daniel Theo Santoso · Surakarta, Indonesia",
-    "linkedin": "LinkedIn",
+    "tagline": "Lead Frontend Engineer yang merancang antarmuka React, Next.js & TypeScript.",
+    "locationDesktop": "Surakarta, Indonesia · WIB (UTC+7)",
+    "locationMobile": "Surakarta, ID · WIB",
+    "navAriaLabel": "Footer",
+    "navHeading": "Navigasi",
+    "connectHeading": "Terhubung",
     "github": "GitHub",
-    "medium": "Medium"
+    "linkedin": "LinkedIn",
+    "medium": "Medium",
+    "email": "Email",
+    "copyright": "© 2026 Daniel Theo Santoso. Hak cipta dilindungi.",
+    "copyrightMobile": "© 2026 Daniel Theo Santoso",
+    "backToTop": "Ke atas"
   },
   "drawer": {
     "eyebrow": "NAVIGASI",

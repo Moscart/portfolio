@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { CaseStudyModal } from '@/components/CaseStudyModal';
 import { ClipboardToast } from '@/components/ClipboardToast';
 import { Navbar } from '@/components/Navbar';
-import { ContactFooterSection } from '@/components/sections/ContactFooterSection';
+import { ContactFooterSection, SiteFooter } from '@/components/sections/ContactFooterSection';
 import { ExperienceSection } from '@/components/sections/ExperienceSection';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { SelectedWorkSection } from '@/components/sections/SelectedWorkSection';
@@ -91,6 +91,8 @@ export function PortfolioShell() {
         <WritingSection />
         <ContactFooterSection copied={copiedEmail} onCopyEmail={handleCopyEmail} />
       </main>
+
+      <SiteFooter />
 
       <CaseStudyModal open={caseStudyOpen} onOpenChange={setCaseStudyOpen} />
       <ClipboardToast open={copiedEmail} />
