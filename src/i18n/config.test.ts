@@ -2,7 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { DEFAULT_LOCALE, LOCALE_COOKIE_NAME, resolveLocale } from './config.ts';
+import {
+  buildLocaleCookieHeader,
+  DEFAULT_LOCALE,
+  LOCALE_COOKIE_MAX_AGE_SECONDS,
+  LOCALE_COOKIE_NAME,
+  resolveLocale,
+} from './config.ts';
 import {
   EXPERIENCE_ITEMS,
   FEATURED_PROJECT,
@@ -53,6 +59,22 @@ test('resolveLocale handles valid, messy, missing, and invalid cookie values saf
   assert.equal(resolveLocale('EN'), 'en');
   assert.equal(resolveLocale(123 as unknown as string), 'en');
   assert.equal(resolveLocale({} as unknown as string), 'en');
+});
+
+test('buildLocaleCookieHeader formats persistent SameSite=Lax cookie with optional Secure flag', () => {
+  assert.equal(LOCALE_COOKIE_MAX_AGE_SECONDS, 60 * 60 * 24 * 365);
+  assert.equal(
+    buildLocaleCookieHeader('id', false),
+    'NEXT_LOCALE=id; Path=/; Max-Age=31536000; SameSite=Lax',
+  );
+  assert.equal(
+    buildLocaleCookieHeader('en', true),
+    'NEXT_LOCALE=en; Path=/; Max-Age=31536000; SameSite=Lax; Secure',
+  );
+  assert.equal(
+    buildLocaleCookieHeader('invalid' as 'en', false),
+    'NEXT_LOCALE=en; Path=/; Max-Age=31536000; SameSite=Lax',
+  );
 });
 
 test('messages/en.json and messages/id.json have identical keys, non-empty strings, and match portfolio-data IDs', () => {

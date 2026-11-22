@@ -49,12 +49,28 @@ test('HeroSection clips scaled Avatar inside frame and offsets #top below sticky
   );
 });
 
-test('LanguageToggle guards Server Action calls with try/catch for offline resilience', () => {
+test('LocaleProvider persists cookie with try/catch, syncs document lang/title, and LanguageToggle switches without server round-trips', () => {
+  const provider = readFileSync(
+    join(process.cwd(), 'src', 'components', 'LocaleProvider.tsx'),
+    'utf8',
+  );
   const toggle = readFileSync(
     join(process.cwd(), 'src', 'components', 'LanguageToggle.tsx'),
     'utf8',
   );
-  assert.ok(toggle.includes('try {') && toggle.includes('catch'));
+  assert.ok(provider.includes('try {') && provider.includes('catch'));
+  assert.ok(provider.includes('document.documentElement.lang'));
+  assert.ok(provider.includes('document.cookie'));
+  assert.equal(
+    toggle.includes('router.refresh'),
+    false,
+    'LanguageToggle should switch locale instantaneously on the client without router.refresh()',
+  );
+  assert.equal(
+    toggle.includes('setLocaleAction'),
+    false,
+    'LanguageToggle should not block UI on a Server Action round-trip',
+  );
 });
 
 test('LanguageToggle uses persistent transform slide (no layoutId) and sticky Navbar header uses layoutRoot', () => {
