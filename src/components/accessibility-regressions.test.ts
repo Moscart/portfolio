@@ -56,3 +56,25 @@ test('LanguageToggle guards Server Action calls with try/catch for offline resil
   );
   assert.ok(toggle.includes('try {') && toggle.includes('catch'));
 });
+
+test('LanguageToggle uses persistent transform slide (no layoutId) and sticky Navbar header uses layoutRoot', () => {
+  const toggle = readFileSync(
+    join(process.cwd(), 'src', 'components', 'LanguageToggle.tsx'),
+    'utf8',
+  );
+  const navbar = readFileSync(join(process.cwd(), 'src', 'components', 'Navbar.tsx'), 'utf8');
+
+  assert.equal(
+    toggle.includes('layoutId='),
+    false,
+    'LanguageToggle must not use layoutId (breaks/jumps in sticky header when scrolled during router.refresh)',
+  );
+  assert.ok(
+    toggle.includes('animate={{ x:'),
+    'LanguageToggle should animate its persistent pill with GPU translateX',
+  );
+  assert.ok(
+    navbar.includes('<motion.header') && navbar.includes('layoutRoot'),
+    'Sticky Navbar header must be a motion.header with layoutRoot so layoutId children animate relative to it',
+  );
+});

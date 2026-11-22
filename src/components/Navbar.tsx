@@ -22,7 +22,11 @@ export function Navbar({ activeSection }: NavbarProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-40 h-16 w-full border-b border-border-subtle bg-background/90 backdrop-blur-md transition-colors">
+      <motion.header
+        layout
+        layoutRoot
+        className="sticky top-0 z-40 h-16 w-full border-b border-border-subtle bg-background/90 backdrop-blur-md transition-colors"
+      >
         <div className="h-full px-5 md:px-8 lg:px-16 2xl:px-0">
           <div className="mx-auto flex h-full w-full max-w-[1008px] items-center justify-between gap-4">
             {/* Brand Wordmark */}
@@ -66,7 +70,7 @@ export function Navbar({ activeSection }: NavbarProps) {
 
             {/* Right Utility Controls */}
             <div className="flex shrink-0 items-center gap-2">
-              <LanguageToggle layoutIdPrefix="navbar" />
+              <LanguageToggle />
               <ThemeToggle />
               <Button
                 type="button"
@@ -82,7 +86,7 @@ export function Navbar({ activeSection }: NavbarProps) {
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       <MobileNavDrawer
         open={drawerOpen}

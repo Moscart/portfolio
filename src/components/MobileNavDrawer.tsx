@@ -124,7 +124,7 @@ export function MobileNavDrawer({ open, onOpenChange, activeSection }: MobileNav
           <div className="flex items-center justify-between gap-4">
             <span className="text-sm text-muted-foreground">{tDrawer('appearanceLabel')}</span>
             <div className="flex items-center gap-2">
-              <LanguageToggle layoutIdPrefix="drawer" />
+              <LanguageToggle />
               <ThemeToggle />
             </div>
           </div>
