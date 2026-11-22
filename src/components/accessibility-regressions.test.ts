@@ -95,3 +95,31 @@ test('MobileNavDrawer overrides SheetContent right-side width and max-width cons
     'MobileNavDrawer must not cap width at 375px',
   );
 });
+
+test('SiteFooter renders as a top-level contentinfo landmark outside <main> with accessible nav, list semantics, and native #top anchor', () => {
+  const shell = readFileSync(
+    join(process.cwd(), 'src', 'components', 'PortfolioShell.tsx'),
+    'utf8',
+  );
+  const footerFile = readFileSync(
+    join(process.cwd(), 'src', 'components', 'sections', 'ContactFooterSection.tsx'),
+    'utf8',
+  );
+
+  assert.ok(
+    /<\/main>\s*<SiteFooter\s*\/>/.test(shell),
+    'SiteFooter must render as a sibling after </main> so <footer> exposes its top-level contentinfo landmark role',
+  );
+  assert.ok(
+    footerFile.includes("aria-label={tFooter('navAriaLabel')}"),
+    'Footer <nav> must have a distinguishable accessible name',
+  );
+  assert.ok(
+    footerFile.includes('role="list"'),
+    'Footer connect <ul> outside <nav> must set role="list" to preserve list semantics in Safari',
+  );
+  assert.ok(
+    footerFile.includes('href="#top"'),
+    'Back-to-top control must use a native <a href="#top"> link',
+  );
+});
