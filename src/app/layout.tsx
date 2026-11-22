@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/fon
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 import { MotionProvider } from '@/components/MotionProvider';
+import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { getSiteUrl, SITE_CONFIG } from '@/lib/site-config';
 import { getThemeInitScript } from '@/lib/theme-logic';
@@ -200,7 +201,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
-            <MotionProvider>{children}</MotionProvider>
+            <MotionProvider>
+              <SmoothScrollProvider>{children}</SmoothScrollProvider>
+            </MotionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

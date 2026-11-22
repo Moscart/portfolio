@@ -47,6 +47,7 @@ export function CaseStudyModal({ open, onOpenChange }: CaseStudyModalProps) {
         <SheetContent
           side="bottom"
           showCloseButton={false}
+          data-lenis-prevent
           className="max-h-[85dvh] gap-5 overflow-y-auto rounded-t-2xl border-t border-border bg-card px-5 pt-3 pb-6 text-foreground shadow-2xl"
         >
           {/* Mobile Drag Handle Pill */}
@@ -140,6 +141,7 @@ export function CaseStudyModal({ open, onOpenChange }: CaseStudyModalProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
+        data-lenis-prevent
         className="max-h-[calc(100dvh-2rem)] w-full max-w-[560px] gap-5 overflow-y-auto rounded-2xl border border-border bg-card p-8 text-foreground shadow-2xl ring-0 sm:max-w-[560px]"
       >
         {/* Top Meta Row */}

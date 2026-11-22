@@ -68,7 +68,7 @@ export function MobileNavDrawer({ open, onOpenChange, activeSection }: MobileNav
         </div>
 
         {/* Navigation Links */}
-        <div className="flex flex-1 flex-col overflow-y-auto px-5 py-6">
+        <div data-lenis-prevent className="flex flex-1 flex-col overflow-y-auto px-5 py-6">
           <p className="mb-3 font-mono text-xs font-medium tracking-[0.8px] text-muted-foreground uppercase">
             {tDrawer('eyebrow')}
           </p>
