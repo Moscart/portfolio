@@ -16,9 +16,10 @@ test('SITE_CONFIG points to renamed profile images and has zero aistudio referen
   assert.equal(existsSync(join(process.cwd(), 'public', 'assets', 'aistudio')), false);
 });
 
-test('getSiteUrl falls back to canonical domain without aistudio cloud run URL', () => {
+test('getSiteUrl falls back to canonical Search Console domain without aistudio cloud run URL', () => {
   const fallback = getSiteUrl({});
-  assert.equal(fallback, 'https://danieltheo.dev');
+  assert.equal(fallback, 'https://portfolio.tsx.web.id');
+  assert.equal(SITE_CONFIG.domain, 'portfolio.tsx.web.id');
   assert.equal(fallback.includes('ais-pre-'), false);
   assert.equal(getSiteUrl({ NEXT_PUBLIC_SITE_URL: 'https://example.com/' }), 'https://example.com');
   assert.equal(

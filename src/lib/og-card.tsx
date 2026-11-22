@@ -216,7 +216,7 @@ export async function createOgCardResponse(theme: OgCardTheme = 'light'): Promis
                   color: palette.muted,
                 }}
               >
-                portfolio.tsx.web.id
+                {SITE_CONFIG.domain}
               </span>
             </div>
 

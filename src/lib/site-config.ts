@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = 'https://danieltheo.dev';
+const DEFAULT_SITE_URL = 'https://portfolio.tsx.web.id';
 
 /**
  * Resolves and normalizes the canonical site URL from environment variables,
@@ -31,12 +31,14 @@ export function getSiteUrl(env: Record<string, string | undefined> = process.env
 
 export const SITE_CONFIG = {
   name: 'Daniel Theo Santoso',
-  shortName: 'D.',
+  handle: 'Moscart',
+  shortName: 'Daniel Theo',
   brandName: 'Daniel Theo',
+  domain: 'portfolio.tsx.web.id',
   role: 'Lead Frontend Engineer',
-  title: 'Daniel Theo Santoso — Lead Frontend Engineer',
+  title: 'Daniel Theo Santoso — Lead Frontend Engineer (Next.js)',
   description:
-    'Lead Frontend Engineer specializing in React, Next.js, and TypeScript—turning complex product systems and Figma designs into fast, maintainable UI.',
+    'Lead Frontend Engineer in React, Next.js & TypeScript. Building feature-first enterprise dashboards, Shadcn UI libraries, and open-source Next.js starters.',
   locale: 'en_US',
   language: 'en-US',
   location: 'Surakarta, Indonesia',
@@ -46,20 +48,28 @@ export const SITE_CONFIG = {
   githubUrl: 'https://github.com/Moscart',
   mediumUrl: 'https://medium.com/@daniel.theo',
   bettyUrl: 'https://betty.id',
+  rekadigiUrl: 'https://rekadigi.id',
   ogImageAlt: 'Daniel Theo Santoso — Lead Frontend Engineer (React, Next.js & TypeScript)',
   profileImagePath: '/images/daniel-profile.webp',
   ogProfileImagePath: '/images/daniel-profile-og.jpg',
   keywords: [
     'Daniel Theo Santoso',
+    'Moscart',
     'Lead Frontend Engineer',
-    'Frontend Programmer',
+    'Lead Frontend Programmer',
     'React Developer',
     'Next.js Developer',
     'TypeScript',
     'Tailwind CSS',
     'Shadcn UI',
     'TanStack Query',
+    'next-intl',
+    'Feature-First Architecture',
+    'next-boilerplate',
+    'Core Web Vitals',
     'PT Daya Rekadigital Indonesia',
+    'Rekadigi',
     'Surakarta',
+    'Remote Frontend Engineer',
   ],
 } as const;
