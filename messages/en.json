@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "title": "Daniel Theo Santoso — Lead Frontend Engineer",
+    "description": "Specializing in React, Next.js, and TypeScript—turning complex product systems and Figma designs into fast, maintainable UI."
+  },
+  "nav": {
+    "ariaLabel": "Primary navigation",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "work": "Work",
+    "experience": "Experience",
+    "writing": "Writing",
+    "contact": "Contact"
+  },
+  "hero": {
+    "fullName": "Daniel Theo Santoso",
+    "roleLocationDesktop": "Lead Frontend Engineer · Surakarta, ID (UTC+7)",
+    "roleLocationMobile": "Lead Frontend Engineer · UTC+7",
+    "availability": "Available for remote roles",
+    "h1": "Clean frontend architecture for fast, modern web apps.",
+    "bio": "Specializing in React, Next.js, and TypeScript—turning complex product systems and Figma designs into fast, maintainable UI.",
+    "ctaPrimary": "Get in touch",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "medium": "Medium",
+    "stackLabel": "CORE STACK",
+    "credibilityDesktop": "3+ yrs experience · B.Sc. Informatics (3.95 GPA)",
+    "credibilityMobile": "3+ yrs exp · B.Sc. Informatics (3.95 GPA)"
+  },
+  "work": {
+    "eyebrow": "SELECTED WORK",
+    "heading": "Recent projects",
+    "featuredBadge": "Featured",
+    "outcomesLabel": "KEY OUTCOMES",
+    "viewCaseStudy": "View case study",
+    "projects": {
+      "betty": {
+        "meta": "betty.id · 2025 – Present",
+        "title": "Betty — Architecture & Enterprise Dashboard",
+        "description": "Restructured Betty into a feature-first codebase, replaced legacy Redux with URL-driven state, and rebuilt UI on a tailored Shadcn UI library.",
+        "outcome1": "Feature-first modular architecture",
+        "outcome2": "URL-driven state (removed Redux)",
+        "outcome3": "Shadcn UI refactor & Husky gates"
+      },
+      "next-boilerplate": {
+        "category": "Open Source",
+        "year": "2026",
+        "title": "next-boilerplate",
+        "description": "Reusable Next.js 16 template with TypeScript, Tailwind v4, Husky, and Docker."
+      },
+      "rekadigi": {
+        "category": "Landing Pages",
+        "year": "2025",
+        "title": "Rekadigi & DRI Web",
+        "description": "Next.js sites for dri.co.id & rekadigi.id with next-intl, SEO, and Lighthouse tuning."
+      },
+      "space-tourism": {
+        "category": "UI Craft",
+        "year": "2024",
+        "title": "Space Tourism",
+        "description": "Multi-page Next.js site with responsive slicing, interactive tabs, and Shadcn UI."
+      }
+    }
+  },
+  "caseStudy": {
+    "badge": "Case Study",
+    "meta": "betty.id · 2025 – Present",
+    "titleDesktop": "Betty — Architecture & Dashboard",
+    "titleMobile": "Betty — Architecture & Dashboard",
+    "summaryDesktop": "Restructured Betty into a feature-first architecture—replacing legacy Redux with URL-driven state, refactoring manual UI into a tailored Shadcn UI library, and streamlining team onboarding.",
+    "summaryMobile": "Feature-first restructuring, Redux removal in favor of URL-driven state, and a tailored Shadcn UI component library.",
+    "highlightsLabel": "ARCHITECTURAL HIGHLIGHTS",
+    "highlightDesktop1": "Feature-first domain modules centralizing logic and accelerating onboarding",
+    "highlightDesktop2": "Replaced legacy Redux with URL-driven & React state, cutting boilerplate & bundle",
+    "highlightDesktop3": "Tailored Shadcn UI refactor, TanStack Query + Joi forms, next-intl & Husky gates",
+    "highlightMobile1": "Feature-first modular architecture",
+    "highlightMobile2": "URL-driven state (removed Redux)",
+    "highlightMobile3": "Shadcn UI refactor & Husky gates",
+    "escHint": "ESC to close",
+    "close": "Close",
+    "visitCta": "Visit betty.id"
+  },
+  "experience": {
+    "eyebrow": "EXPERIENCE",
+    "heading": "Work history",
+    "currentBadge": "Current",
+    "items": {
+      "rekadigi-lead": {
+        "role": "Lead Frontend Programmer",
+        "company": "PT Daya Rekadigital Indonesia (Rekadigi)",
+        "period": "Jul 2025 – Present",
+        "summary": "Scaling dri.co.id, rekadigi.id, and betty.id. Led feature-first refactor, replaced Redux with URL-driven state, rebuilt Shadcn UI kit, and mentor devs."
+      },
+      "stt-warga": {
+        "role": "Staff IT",
+        "company": "Sekolah Tinggi Teknologi Warga",
+        "period": "Jan – Jul 2025",
+        "summary": "Owned campus web platforms and IT ops solo. Independently migrated the e-learning system from CodeIgniter 3 to 4, streamlined database queries, and maintained legacy CI3 sites."
+      },
+      "freelance-remote": {
+        "role": "Frontend Web Developer",
+        "company": "Freelance · Self-Employed",
+        "period": "Aug 2024 – Jan 2025",
+        "summary": "Delivered responsive production UIs with Next.js, Tailwind CSS, and Laravel Blade for ruangdiri.id, widartoimpact.com, and saldogame.com."
+      },
+      "javan-react": {
+        "role": "Frontend Programmer (React)",
+        "company": "PT Javan Cipta Solusi",
+        "period": "Aug – Dec 2023",
+        "summary": "Converted from intern to contract programmer for Sinergi KPK. Built React.js BPMN approval workflow UIs and refined Laravel Eloquent queries in an Agile team."
+      },
+      "duxeos-intern": {
+        "role": "Web Developer (Intern)",
+        "company": "Duxeos Software House",
+        "period": "Jul – Dec 2019",
+        "summary": "Built official websites and custom CodeIgniter 3 CMS admin panels for SMA Negeri 8 & SMP Negeri 8 Surakarta plus company profiles with MySQL and Bootstrap."
+      }
+    }
+  },
+  "writing": {
+    "eyebrow": "WRITING",
+    "heading": "Notes on Medium",
+    "allArticles": "All articles on Medium",
+    "readArticle": "Read article",
+    "enterHint": "Enter ↵",
+    "progressiveNote": "Two articles live—more notes on React, Next.js architecture, and frontend tooling on the way.",
+    "followHandle": "Follow @daniel.theo",
+    "articles": {
+      "feature-first-nextjs": {
+        "category": "Architecture · Next.js · ID",
+        "title": "Feature-First Architecture in Next.js: Clean Inside & Out",
+        "excerpt": "Why grouping Next.js code by feature beats type-based folders—easing onboarding and isolating team edits."
+      },
+      "husky-lint-staged": {
+        "category": "Workflow & Code Quality · ID",
+        "title": "Why Husky & lint-staged Belong in Every Frontend Project",
+        "excerpt": "How pre-commit hooks automate ESLint, Prettier, and TypeScript checks before messy code reaches git."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "CONTACT",
+    "availabilityDesktop": "Available · Surakarta, ID (UTC+7)",
+    "availabilityMobile": "Available · UTC+7",
+    "heading": "Let’s build something clear and fast.",
+    "subcopy": "Open to remote frontend engineering roles and Next.js architecture consulting.",
+    "emailCta": "Email Daniel",
+    "copiedInline": "Copied to clipboard!"
+  },
+  "footer": {
+    "copyright": "© 2026 Daniel Theo Santoso · Surakarta, Indonesia",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "medium": "Medium"
+  },
+  "drawer": {
+    "eyebrow": "NAVIGATION",
+    "appearanceLabel": "Appearance & Language"
+  },
+  "toast": {
+    "emailCopied": "Email copied to clipboard",
+    "durationMeta": "2s"
+  },
+  "theme": {
+    "toggleLabel": "Toggle color theme",
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode"
+  },
+  "language": {
+    "groupLabel": "Language selection",
+    "en": "EN",
+    "id": "ID"
+  }
+}

@@ -1,79 +1,190 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import 'lenis/dist/lenis.css';
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ============================================================================
+ * Portfolio Design System — Foundations (figcraft/design.figcraft)
+ * Base UI (@base-ui/react) · base-nova · Strict 4px Scale · Brand Orange #F54900
+ * ============================================================================ */
+
+:root {
+  /* Native UI color-scheme adaptation (modern-web-guidance: dark-mode) */
+  color-scheme: light dark;
+
+  /* Semantic Light Tokens (:root) */
+  --background: #ffffff;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --popover: #ffffff;
+  --popover-foreground: #09090b;
+  --primary: #f54900;
+  --primary-foreground: #ffffff;
+  --secondary: #f7f7f8;
+  --secondary-foreground: #18181b;
+  --muted: #f7f7f8;
+  --muted-foreground: #71717a;
+  --accent: #efeff1;
+  --accent-foreground: #c2410c;
+  --destructive: #e7000b;
+  --destructive-foreground: #ffffff;
+  --border: #e4e4e7;
+  --border-subtle: #ececef;
+  --input: #e4e4e7;
+  --ring: #f54900;
+
+  /* Extended Portfolio Ink & Status Tokens */
+  --text-secondary: #27272a;
+  --text-body: #52525b;
+  --status-available: #16a34a;
+  --scrollbar-thumb: rgba(113, 113, 122, 0.35);
+
+  /* Strict 4px Radius Base (8px) */
+  --radius: 0.5rem;
+}
+
+/* Reflect explicit color-scheme override from <meta name="color-scheme"> or .dark */
+:root:has(> head > meta[name='color-scheme'][content='light']),
+:root.light {
+  color-scheme: light;
+}
+
+:root:has(> head > meta[name='color-scheme'][content='dark']),
+.dark {
+  color-scheme: dark;
+
+  /* Semantic Dark Tokens (.dark · Obsidian Zinc + Unified Orange #F54900) */
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #18181b;
+  --card-foreground: #fafafa;
+  --popover: #18181b;
+  --popover-foreground: #fafafa;
+  --primary: #f54900;
+  --primary-foreground: #ffffff;
+  --secondary: #111113;
+  --secondary-foreground: #f4f4f5;
+  --muted: #18181b;
+  --muted-foreground: #8b8b95;
+  --accent: #27272a;
+  --accent-foreground: #ff7a3d;
+  --destructive: #ff6467;
+  --destructive-foreground: #09090b;
+  --border: #27272a;
+  --border-subtle: #1f1f23;
+  --input: #27272a;
+  --ring: #ff6b2b;
+
+  /* Extended Portfolio Dark Ink & Status Tokens */
+  --text-secondary: #e4e4e7;
+  --text-body: #a1a1aa;
+  --status-available: #22c55e;
+  --scrollbar-thumb: rgba(161, 161, 170, 0.3);
+}
+
+@theme inline {
+  /* Fonts (non-cyclic bindings to next/font variables on <html>) */
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+
+  /* 4 FigCraft Breakpoints: base (375px), md (768px), lg (1024px), 2xl (1440px) */
+  --breakpoint-2xl: 90rem;
+
+  /* Semantic Color Utilities */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-body: var(--text-body);
+  --color-status-available: var(--status-available);
+
+  /* Strict 4px Radius Scale (--radius: 8px) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-4xl: 9999px;
+}
+
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    overflow-x: clip;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(113, 113, 122, 0.35) transparent;
+  * {
+    @apply border-border;
   }
 
-  html.dark {
-    scrollbar-color: rgba(161, 161, 170, 0.28) transparent;
+  html {
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    overflow-x: clip;
+    accent-color: var(--primary);
+    /* Never animate scrollbar-color (WebKit flicker bug) */
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+    @apply font-sans;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html.lenis {
+      scroll-behavior: auto;
+    }
   }
 
   body {
     overflow-x: clip;
+    @apply bg-background text-foreground antialiased;
   }
 
-  /* Lenis Smooth Scroll Base Rules */
-  html.lenis,
-  html.lenis body {
-    height: auto;
+  /* WCAG 2.2 2px Focus-Visible Ring (Orange #F54900 Light / #FF6B2B Dark) */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-  }
+  /* Legacy WebKit scrollbar fallback scoped so it never collides with standard scrollbar-color */
+  @supports not (scrollbar-color: auto) {
+    html {
+      scrollbar-width: auto;
+    }
 
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-  }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
 
-  /* Custom Minimalist Scrollbar (WebKit / Blink) */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 0px;
-  }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
 
-  ::-webkit-scrollbar:horizontal {
-    height: 0px;
-    display: none;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(113, 113, 122, 0.3);
-    border-radius: 9999px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(234, 88, 12, 0.75);
-  }
-
-  .dark ::-webkit-scrollbar-thumb {
-    background-color: rgba(161, 161, 170, 0.25);
-  }
-
-  .dark ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(250, 204, 21, 0.75);
-  }
-
-  /* Utility for hiding scrollbars on horizontal filter/tab containers */
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb);
+      border-radius: 9999px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -89,5 +200,3 @@
     }
   }
 }
-
-
