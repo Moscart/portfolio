@@ -32,7 +32,7 @@
     "heading": "Recent projects",
     "featuredBadge": "Featured",
     "outcomesLabel": "KEY OUTCOMES",
-    "viewCaseStudy": "View case study",
+    "visitBetty": "Visit betty.id",
     "projects": {
       "betty": {
         "meta": "betty.id · 2025 – Present",
@@ -61,24 +61,6 @@
         "description": "Multi-page Next.js site with responsive slicing, interactive tabs, and Shadcn UI."
       }
     }
-  },
-  "caseStudy": {
-    "badge": "Case Study",
-    "meta": "betty.id · 2025 – Present",
-    "titleDesktop": "Betty — Architecture & Dashboard",
-    "titleMobile": "Betty — Architecture & Dashboard",
-    "summaryDesktop": "Restructured Betty into a feature-first architecture—replacing legacy Redux with URL-driven state, refactoring manual UI into a tailored Shadcn UI library, and streamlining team onboarding.",
-    "summaryMobile": "Feature-first restructuring, Redux removal in favor of URL-driven state, and a tailored Shadcn UI component library.",
-    "highlightsLabel": "ARCHITECTURAL HIGHLIGHTS",
-    "highlightDesktop1": "Feature-first domain modules centralizing logic and accelerating onboarding",
-    "highlightDesktop2": "Replaced legacy Redux with URL-driven & React state, cutting boilerplate & bundle",
-    "highlightDesktop3": "Tailored Shadcn UI refactor, TanStack Query + Joi forms, next-intl & Husky gates",
-    "highlightMobile1": "Feature-first modular architecture",
-    "highlightMobile2": "URL-driven state (removed Redux)",
-    "highlightMobile3": "Shadcn UI refactor & Husky gates",
-    "escHint": "ESC to close",
-    "close": "Close",
-    "visitCta": "Visit betty.id"
   },
   "experience": {
     "eyebrow": "EXPERIENCE",

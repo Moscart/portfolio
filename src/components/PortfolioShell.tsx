@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { CaseStudyModal } from '@/components/CaseStudyModal';
 import { ClipboardToast } from '@/components/ClipboardToast';
 import { Navbar } from '@/components/Navbar';
 import { ContactFooterSection, SiteFooter } from '@/components/sections/ContactFooterSection';
@@ -17,7 +16,6 @@ const COPY_FEEDBACK_DURATION_MS = 2000;
 
 export function PortfolioShell() {
   const [activeSection, setActiveSection] = useState<SectionId | null>(null);
-  const [caseStudyOpen, setCaseStudyOpen] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const copyTimerRef = useRef<ResettableTimer | null>(null);
 
@@ -86,7 +84,7 @@ export function PortfolioShell() {
 
       <main>
         <HeroSection />
-        <SelectedWorkSection onOpenCaseStudy={() => setCaseStudyOpen(true)} />
+        <SelectedWorkSection />
         <ExperienceSection />
         <WritingSection />
         <ContactFooterSection copied={copiedEmail} onCopyEmail={handleCopyEmail} />
@@ -94,7 +92,6 @@ export function PortfolioShell() {
 
       <SiteFooter />
 
-      <CaseStudyModal open={caseStudyOpen} onOpenChange={setCaseStudyOpen} />
       <ClipboardToast open={copiedEmail} />
     </div>
   );

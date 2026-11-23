@@ -3,7 +3,6 @@ export interface FeaturedProjectMeta {
   domain: string;
   url: string;
   stack: readonly string[];
-  modalStack: readonly string[];
 }
 
 export interface SecondaryProjectMeta {
@@ -36,7 +35,6 @@ export const FEATURED_PROJECT: FeaturedProjectMeta = {
   domain: 'betty.id',
   url: 'https://betty.id',
   stack: ['Next.js', 'TypeScript', 'TanStack Query', 'Shadcn UI', 'next-intl'],
-  modalStack: ['Next.js', 'TypeScript', 'TanStack Query', 'Shadcn UI', 'next-intl', 'Joi'],
 };
 
 export const SECONDARY_PROJECTS: readonly SecondaryProjectMeta[] = [

@@ -28,13 +28,26 @@ test('anchor links never use Base UI Button nativeButton={false} (prevents role=
   }
 });
 
-test('CaseStudyModal enforces viewport max-height and internal scrolling on both Desktop Dialog and Mobile Sheet', () => {
-  const modal = readFileSync(
-    join(process.cwd(), 'src', 'components', 'CaseStudyModal.tsx'),
+test('SelectedWorkSection links Betty directly to betty.id in a new tab without CaseStudyModal', () => {
+  const work = readFileSync(
+    join(process.cwd(), 'src', 'components', 'sections', 'SelectedWorkSection.tsx'),
     'utf8',
   );
-  assert.ok(modal.includes('max-h-[85dvh]') && modal.includes('overflow-y-auto'));
-  assert.ok(modal.includes('max-h-[calc(100dvh-2rem)]'));
+  const shell = readFileSync(
+    join(process.cwd(), 'src', 'components', 'PortfolioShell.tsx'),
+    'utf8',
+  );
+  assert.ok(
+    work.includes('href={FEATURED_PROJECT.url}') &&
+      work.includes('target="_blank"') &&
+      work.includes('rel="noopener noreferrer"'),
+    'Betty CTA must link directly to FEATURED_PROJECT.url with target="_blank" and rel="noopener noreferrer"',
+  );
+  assert.equal(
+    shell.includes('CaseStudyModal'),
+    false,
+    'PortfolioShell must not render CaseStudyModal',
+  );
 });
 
 test('HeroSection clips scaled Avatar inside frame and offsets #top below sticky navbar', () => {

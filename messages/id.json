@@ -32,7 +32,7 @@
     "heading": "Proyek terbaru",
     "featuredBadge": "Unggulan",
     "outcomesLabel": "HASIL UTAMA",
-    "viewCaseStudy": "Lihat studi kasus",
+    "visitBetty": "Kunjungi betty.id",
     "projects": {
       "betty": {
         "meta": "betty.id · 2025 – Sekarang",
@@ -61,24 +61,6 @@
         "description": "Situs multi-halaman Next.js dengan slicing responsif, tab interaktif, dan Shadcn UI."
       }
     }
-  },
-  "caseStudy": {
-    "badge": "Studi Kasus",
-    "meta": "betty.id · 2025 – Sekarang",
-    "titleDesktop": "Betty — Arsitektur & Dashboard",
-    "titleMobile": "Betty — Arsitektur & Dashboard",
-    "summaryDesktop": "Merestrukturisasi Betty menjadi arsitektur feature-first—mengganti Redux legacy dengan URL-driven state, merefaktor komponen manual ke library Shadcn UI yang disesuaikan, dan mempercepat onboarding tim.",
-    "summaryMobile": "Restrukturisasi feature-first, penghapusan Redux ke URL-driven state, dan library komponen Shadcn UI internal.",
-    "highlightsLabel": "SOROTAN ARSITEKTUR",
-    "highlightDesktop1": "Modul domain berbasis fitur yang memusatkan logika dan mempercepat onboarding",
-    "highlightDesktop2": "Mengganti Redux legacy dengan URL-driven & React state untuk memangkas boilerplate dan ukuran bundle",
-    "highlightDesktop3": "Refaktor penuh Shadcn UI, TanStack Query + form Joi, next-intl, dan gerbang Husky",
-    "highlightMobile1": "Arsitektur modular feature-first",
-    "highlightMobile2": "URL-driven state (hapus Redux)",
-    "highlightMobile3": "Refaktor Shadcn UI & Husky gates",
-    "escHint": "ESC untuk tutup",
-    "close": "Tutup",
-    "visitCta": "Kunjungi betty.id"
   },
   "experience": {
     "eyebrow": "PENGALAMAN",

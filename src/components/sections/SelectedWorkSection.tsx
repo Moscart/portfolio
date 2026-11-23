@@ -9,11 +9,7 @@ import { FEATURED_PROJECT, SECONDARY_PROJECTS } from '@/lib/portfolio-data';
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-interface SelectedWorkSectionProps {
-  onOpenCaseStudy: () => void;
-}
-
-export function SelectedWorkSection({ onOpenCaseStudy }: SelectedWorkSectionProps) {
+export function SelectedWorkSection() {
   const t = useTranslations('work');
 
   const bettyOutcomes = [
@@ -114,14 +110,15 @@ export function SelectedWorkSection({ onOpenCaseStudy }: SelectedWorkSectionProp
                   </ul>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={onOpenCaseStudy}
-                  className="inline-flex w-fit cursor-pointer items-center gap-1 rounded-xs text-xs leading-4 font-semibold text-accent-foreground underline-offset-4 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                <a
+                  href={FEATURED_PROJECT.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-fit items-center gap-1 rounded-xs text-xs leading-4 font-semibold text-accent-foreground underline-offset-4 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  <span>{t('viewCaseStudy')}</span>
+                  <span>{t('visitBetty')}</span>
                   <IconArrowUpRight className="size-3.5 stroke-[2.25]" aria-hidden="true" />
-                </button>
+                </a>
               </div>
             </motion.article>
 
