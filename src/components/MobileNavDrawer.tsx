@@ -22,14 +22,21 @@ interface MobileNavDrawerProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   activeSection: SectionId | null;
+  basePath?: '' | '/';
 }
 
-export function MobileNavDrawer({ open, onOpenChange, activeSection }: MobileNavDrawerProps) {
+export function MobileNavDrawer({
+  open,
+  onOpenChange,
+  activeSection,
+  basePath = '',
+}: MobileNavDrawerProps) {
   const tNav = useTranslations('nav');
   const tDrawer = useTranslations('drawer');
   const tHero = useTranslations('hero');
 
-  const effectiveActive = activeSection ?? 'work';
+  const effectiveActive = basePath === '/' ? activeSection : (activeSection ?? 'work');
+  const homeHref = basePath === '/' ? '/' : '#top';
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -44,7 +51,7 @@ export function MobileNavDrawer({ open, onOpenChange, activeSection }: MobileNav
         {/* Drawer Top Bar */}
         <div className="flex h-16 shrink-0 items-center justify-between border-b border-border-subtle px-5">
           <a
-            href="#top"
+            href={homeHref}
             onClick={() => onOpenChange(false)}
             className="font-display text-[20px] leading-6 font-bold tracking-[-0.4px] text-foreground"
           >
@@ -79,7 +86,7 @@ export function MobileNavDrawer({ open, onOpenChange, activeSection }: MobileNav
               return (
                 <a
                   key={item.id}
-                  href={item.href}
+                  href={`${basePath}${item.href}`}
                   onClick={() => onOpenChange(false)}
                   className={cn(
                     'group flex min-h-14 items-center justify-between rounded-xl px-4 py-3.5 transition-colors duration-150',
@@ -133,7 +140,7 @@ export function MobileNavDrawer({ open, onOpenChange, activeSection }: MobileNav
         {/* Bottom Pinned CTA & Social Grid */}
         <div className="mt-auto flex flex-col gap-3 px-5 pt-4 pb-6">
           <a
-            href="#contact"
+            href={`${basePath}#contact`}
             onClick={() => onOpenChange(false)}
             className={cn(
               buttonVariants({ variant: 'default' }),

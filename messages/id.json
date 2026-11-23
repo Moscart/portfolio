@@ -179,5 +179,28 @@
     "groupLabel": "Pilihan bahasa",
     "en": "EN",
     "id": "ID"
+  },
+  "notFound": {
+    "metaTitle": "404 — Halaman Tidak Ditemukan",
+    "metaDescription": "Halaman yang Anda cari tidak ditemukan di portofolio Daniel Theo Santoso.",
+    "eyebrow": "GALAT 404 · TIDAK DITEMUKAN",
+    "statusPill": "HTTP 404 · Rute tidak tersedia",
+    "heading": "Halaman ini tidak ada di peta rute.",
+    "description": "Tautan mungkin sudah kedaluwarsa, dipindahkan, atau salah ketik. Kembali ke beranda portofolio atau langsung menuju bagian di bawah.",
+    "backHome": "Kembali ke beranda",
+    "goBack": "Halaman sebelumnya",
+    "inspectorTitle": "INSPEKTOR RUTE",
+    "inspectorStatusKey": "status",
+    "inspectorStatusValue": "404 Tidak Ditemukan",
+    "inspectorHostKey": "host",
+    "inspectorFallbackKey": "tujuan",
+    "inspectorFallbackValue": "/ (Beranda)",
+    "quickDestinations": "TUJUAN CEPAT",
+    "destinations": {
+      "work": "Studi kasus & open source",
+      "experience": "3+ thn frontend engineering",
+      "writing": "Catatan arsitektur di Medium",
+      "contact": "Tersedia untuk proyek remote"
+    }
   }
 }

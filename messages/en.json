@@ -179,5 +179,28 @@
     "groupLabel": "Language selection",
     "en": "EN",
     "id": "ID"
+  },
+  "notFound": {
+    "metaTitle": "404 — Page Not Found",
+    "metaDescription": "The page you are looking for could not be found on Daniel Theo Santoso's portfolio.",
+    "eyebrow": "ERROR 404 · NOT FOUND",
+    "statusPill": "HTTP 404 · Route unavailable",
+    "heading": "This page isn’t in the route map.",
+    "description": "The link may be outdated, moved, or mistyped. Head back to the portfolio homepage or jump directly to a section below.",
+    "backHome": "Back to home",
+    "goBack": "Go back",
+    "inspectorTitle": "ROUTE INSPECTOR",
+    "inspectorStatusKey": "status",
+    "inspectorStatusValue": "404 Not Found",
+    "inspectorHostKey": "host",
+    "inspectorFallbackKey": "fallback",
+    "inspectorFallbackValue": "/ (Home)",
+    "quickDestinations": "QUICK DESTINATIONS",
+    "destinations": {
+      "work": "Selected case studies & OSS",
+      "experience": "3+ yrs frontend engineering",
+      "writing": "Architecture notes on Medium",
+      "contact": "Available for remote roles"
+    }
   }
 }

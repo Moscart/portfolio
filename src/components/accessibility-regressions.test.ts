@@ -139,3 +139,41 @@ test('SiteFooter renders as a top-level contentinfo landmark outside <main> with
     'Back-to-top control must use a native <a href="#top"> link',
   );
 });
+
+test('NotFound page exposes localized metadata, single h1, sibling SiteFooter, and EN/ID translation parity', () => {
+  const notFoundRoute = readFileSync(join(process.cwd(), 'src', 'app', 'not-found.tsx'), 'utf8');
+  const notFoundView = readFileSync(
+    join(process.cwd(), 'src', 'components', 'NotFoundView.tsx'),
+    'utf8',
+  );
+  const enMessages = JSON.parse(
+    readFileSync(join(process.cwd(), 'messages', 'en.json'), 'utf8'),
+  ) as { notFound?: Record<string, unknown> };
+  const idMessages = JSON.parse(
+    readFileSync(join(process.cwd(), 'messages', 'id.json'), 'utf8'),
+  ) as { notFound?: Record<string, unknown> };
+
+  assert.ok(
+    notFoundRoute.includes('export async function generateMetadata'),
+    'app/not-found.tsx must export generateMetadata for localized 404 <title>',
+  );
+  assert.ok(
+    /<\/main>\s*<SiteFooter\s+basePath="\/"\s*\/>/.test(notFoundView),
+    'NotFoundView must render SiteFooter with basePath="/" as a sibling after </main>',
+  );
+  assert.equal(
+    (notFoundView.match(/<h1[\s>]/g) ?? []).length,
+    1,
+    'NotFoundView must render exactly one <h1> heading',
+  );
+  assert.ok(
+    notFoundView.includes('role="list"'),
+    'NotFoundView quick destinations <ul> outside <nav> must set role="list" for Safari',
+  );
+  assert.ok(enMessages.notFound && idMessages.notFound, 'EN and ID must both define notFound');
+  assert.deepEqual(
+    Object.keys(enMessages.notFound).sort(),
+    Object.keys(idMessages.notFound).sort(),
+    'EN and ID notFound translation keys must match',
+  );
+});

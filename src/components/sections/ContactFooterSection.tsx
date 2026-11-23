@@ -114,9 +114,14 @@ const FOOTER_CONNECT_LINKS = [
   { id: 'email', href: `mailto:${SITE_CONFIG.email}`, external: false },
 ] as const;
 
-export function SiteFooter() {
+interface SiteFooterProps {
+  basePath?: '' | '/';
+}
+
+export function SiteFooter({ basePath = '' }: SiteFooterProps) {
   const tNav = useTranslations('nav');
   const tFooter = useTranslations('footer');
+  const homeHref = basePath === '/' ? '/' : '#top';
 
   return (
     <footer className="bg-background pb-8 lg:pb-9 2xl:pb-10">
@@ -133,7 +138,7 @@ export function SiteFooter() {
             {/* Brand Identity & Location Pill */}
             <div className="flex w-full flex-col gap-3 md:w-[312px] md:gap-4 lg:w-[352px] 2xl:w-[384px]">
               <a
-                href="#top"
+                href={homeHref}
                 className="inline-flex min-h-6 w-fit items-baseline font-display text-[20px] leading-6 font-bold tracking-[-0.4px] whitespace-nowrap text-foreground transition-colors duration-150 hover:text-foreground/80"
               >
                 {SITE_CONFIG.brandName}
@@ -163,7 +168,7 @@ export function SiteFooter() {
                   {NAV_SECTIONS.map((item) => (
                     <li key={item.id}>
                       <a
-                        href={item.href}
+                        href={`${basePath}${item.href}`}
                         className="inline-flex min-h-6 items-center text-sm leading-6 font-medium text-secondary-foreground transition-colors duration-150 hover:text-primary dark:text-text-secondary dark:hover:text-primary"
                       >
                         {tNav(item.id)}
