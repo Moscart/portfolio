@@ -4,6 +4,8 @@ export type Locale = (typeof LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = 'en';
 
+export const DEFAULT_TIME_ZONE = 'Asia/Jakarta';
+
 export const LOCALE_COOKIE_NAME = 'NEXT_LOCALE';
 
 export const LOCALE_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;

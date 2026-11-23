@@ -71,9 +71,18 @@ test('LocaleProvider persists cookie with try/catch, syncs document lang/title, 
     join(process.cwd(), 'src', 'components', 'LanguageToggle.tsx'),
     'utf8',
   );
+  const requestConfig = readFileSync(join(process.cwd(), 'src', 'i18n', 'request.ts'), 'utf8');
   assert.ok(provider.includes('try {') && provider.includes('catch'));
   assert.ok(provider.includes('document.documentElement.lang'));
   assert.ok(provider.includes('document.cookie'));
+  assert.ok(
+    provider.includes('timeZone={DEFAULT_TIME_ZONE}'),
+    'LocaleProvider must pass explicit timeZone to NextIntlClientProvider to prevent ENVIRONMENT_FALLBACK',
+  );
+  assert.ok(
+    requestConfig.includes('timeZone: DEFAULT_TIME_ZONE'),
+    'src/i18n/request.ts must configure timeZone in getRequestConfig',
+  );
   assert.equal(
     toggle.includes('router.refresh'),
     false,

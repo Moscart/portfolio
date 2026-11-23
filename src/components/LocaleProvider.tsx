@@ -4,7 +4,12 @@ import React, { createContext, useCallback, useContext, useMemo, useState } from
 import { NextIntlClientProvider } from 'next-intl';
 import enMessages from '../../messages/en.json';
 import idMessages from '../../messages/id.json';
-import { buildLocaleCookieHeader, resolveLocale, type Locale } from '@/i18n/config';
+import {
+  buildLocaleCookieHeader,
+  DEFAULT_TIME_ZONE,
+  resolveLocale,
+  type Locale,
+} from '@/i18n/config';
 
 const MESSAGES_BY_LOCALE = {
   en: enMessages,
@@ -57,7 +62,11 @@ export function LocaleProvider({ initialLocale, children }: LocaleProviderProps)
 
   return (
     <LocaleContext.Provider value={contextValue}>
-      <NextIntlClientProvider locale={locale} messages={MESSAGES_BY_LOCALE[locale]}>
+      <NextIntlClientProvider
+        locale={locale}
+        messages={MESSAGES_BY_LOCALE[locale]}
+        timeZone={DEFAULT_TIME_ZONE}
+      >
         {children}
       </NextIntlClientProvider>
     </LocaleContext.Provider>

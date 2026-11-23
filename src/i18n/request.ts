@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { getRequestConfig } from 'next-intl/server';
-import { LOCALE_COOKIE_NAME, resolveLocale } from './config';
+import { DEFAULT_TIME_ZONE, LOCALE_COOKIE_NAME, resolveLocale } from './config';
 
 export default getRequestConfig(async () => {
   const cookieStore = await cookies();
@@ -8,6 +8,7 @@ export default getRequestConfig(async () => {
 
   return {
     locale,
+    timeZone: DEFAULT_TIME_ZONE,
     messages: (await import(`../../messages/${locale}.json`)).default,
   };
 });
