@@ -14,11 +14,13 @@ import { cn } from '@/lib/utils';
 
 interface NavbarProps {
   activeSection: SectionId | null;
+  basePath?: '' | '/';
 }
 
-export function Navbar({ activeSection }: NavbarProps) {
+export function Navbar({ activeSection, basePath = '' }: NavbarProps) {
   const t = useTranslations('nav');
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const homeHref = basePath === '/' ? '/' : '#top';
 
   return (
     <>
@@ -31,7 +33,7 @@ export function Navbar({ activeSection }: NavbarProps) {
           <div className="mx-auto flex h-full w-full max-w-[1008px] items-center justify-between gap-4">
             {/* Brand Wordmark */}
             <a
-              href="#top"
+              href={homeHref}
               className="shrink-0 font-display text-[20px] leading-6 font-bold tracking-[-0.4px] whitespace-nowrap text-foreground transition-colors hover:text-foreground/80"
             >
               {SITE_CONFIG.brandName}
@@ -45,7 +47,7 @@ export function Navbar({ activeSection }: NavbarProps) {
                 return (
                   <a
                     key={item.id}
-                    href={item.href}
+                    href={`${basePath}${item.href}`}
                     aria-current={isActive ? 'location' : undefined}
                     className={cn(
                       'relative py-1 text-base leading-6 font-medium whitespace-nowrap transition-colors duration-150',
@@ -92,6 +94,7 @@ export function Navbar({ activeSection }: NavbarProps) {
         open={drawerOpen}
         onOpenChange={setDrawerOpen}
         activeSection={activeSection}
+        basePath={basePath}
       />
     </>
   );
